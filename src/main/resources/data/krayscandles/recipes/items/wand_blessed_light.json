@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "c",
+    "r",
+    "w"
+  ],
+  "key":
+  {
+    "c":
+    {
+      "item": "krayscandles:candle_blessed"
+    },
+    "w":
+    {
+      "item": "krayscandles:wand_hilt"
+    },
+    "r":
+    {
+      "item": "krayscandles:rune_blessed_flight"
+    }
+  },
+  "result":
+  {
+    "item": "krayscandles:wand_blessed_light",
+    "count": 1
+  }
+}

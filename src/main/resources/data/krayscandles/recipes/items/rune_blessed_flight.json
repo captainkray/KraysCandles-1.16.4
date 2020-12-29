@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "beb",
+    "cdc",
+    "bcb"
+  ],
+  "key":
+  {
+    "b":
+    {
+      "item": "krayscandles:soul_essence_blessed"
+    },
+    "d":
+    {
+      "item": "minecraft:diamond"
+    },
+    "c":
+    {
+      "item": "minecraft:chorus_fruit"
+    },
+    "e":
+    {
+      "item": "minecraft:elytra"
+    }
+  },
+  "result":
+  {
+    "item": "krayscandles:rune_blessed_flight",
+    "count": 1
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "ez",
+    "gd"
+  ],
+  "key":
+  {
+    "e":
+    {
+      "item": "krayscandles:flying_bat_eyeball"
+    },
+    "z":
+    {
+      "item": "krayscandles:zombie_ear"
+    },
+    "d":
+    {
+      "item": "minecraft:diamond"
+    },
+    "g":
+    {
+      "item": "minecraft:glowstone_dust"
+    }
+  },
+  "result":
+  {
+    "item": "krayscandles:rune_cursed_night",
+    "count": 1
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "c",
+    "f",
+    "w"
+  ],
+  "key":
+  {
+    "c":
+    {
+      "item": "krayscandles:candle_fire"
+    },
+    "w":
+    {
+      "item": "krayscandles:wand_hilt"
+    },
+    "f":
+    {
+      "item": "minecraft:fire_charge"
+    }
+  },
+  "result":
+  {
+    "item": "krayscandles:wand_basic",
+    "count": 1
+  }
+}

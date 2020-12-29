@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "c",
+    "f",
+    "w"
+  ],
+  "key":
+  {
+    "c":
+    {
+      "item": "krayscandles:candle_invis"
+    },
+    "w":
+    {
+      "item": "krayscandles:wand_hilt"
+    },
+    "f":
+    {
+      "item": "krayscandles:rune_great_magic"
+    }
+  },
+  "result":
+  {
+    "item": "krayscandles:wand_magician",
+    "count": 1
+  }
+}

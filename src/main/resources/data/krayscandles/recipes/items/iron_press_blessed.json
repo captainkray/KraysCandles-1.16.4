@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "mno",
+    "lip",
+    "beb"
+  ],
+  "key":
+  {
+    "i":
+    {
+      "item": "krayscandles:iron_press"
+    },
+    "e":
+    {
+      "item": "krayscandles:soul_essence_blessed"
+    },
+    "b":
+    {
+      "item": "krayscandles:wax_chunk_purged"
+    },
+    "l":
+    {
+      "item": "krayscandles:rune_great_energy"
+    },
+    "m":
+    {
+      "item": "krayscandles:rune_great_fire"
+    },
+    "n":
+    {
+      "item": "krayscandles:rune_great_mining"
+    },
+    "o":
+    {
+      "item": "krayscandles:rune_great_magic"
+    },
+    "p":
+    {
+      "item": "krayscandles:rune_great_levitation"
+    }
+  },
+  "result":
+  {
+    "item": "krayscandles:iron_press_blessed",
+    "count": 1
+  }
+}

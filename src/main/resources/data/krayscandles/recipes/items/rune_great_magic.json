@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "bg",
+    "gd"
+  ],
+  "key":
+  {
+    "g":
+    {
+      "item": "krayscandles:soul_essence_greater"
+    },
+    "d":
+    {
+      "item": "minecraft:diamond"
+    },
+    "b":
+    {
+      "item": "minecraft:rabbit_foot"
+    }
+  },
+  "result":
+  {
+    "item": "krayscandles:rune_great_magic",
+    "count": 1
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "w",
+    "s",
+    "s"
+  ],
+  "key":
+  {
+    "w":
+    {
+      "item": "krayscandles:candle_wick"
+    },
+    "s":
+    {
+      "item": "krayscandles:wax_chunk_bee"
+    }
+  },
+  "result":
+  {
+    "item": "krayscandles:candle_wax_bee",
+    "count": 1
+  }
+}
