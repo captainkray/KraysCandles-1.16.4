@@ -23,11 +23,21 @@ public class RitualEvents {
 
         if (event.getEntity() instanceof PlayerEntity) {
 
-            //Handles Depleted Ritual
-            if (handleItemRitual(event, RitualTypes.RITUAL_GREATER_SOUL_ESSENCE, InitItems.SOUL_ESSENCE_GREATER_DEPLETED.get(), InitItems.SOUL_ESSENCE_GREATER.get()));
+            //Handles Essence
+            if (handleItemRitual(event, RitualTypes.RITUAL_ESSENCE, InitItems.SOUL_ESSENCE_GREATER_DEPLETED.get(), InitItems.SOUL_ESSENCE_GREATER.get()));
+            else if (handleItemRitual(event, RitualTypes.RITUAL_ESSENCE, InitItems.SOUL_ESSENCE_BLESSED_DEPLETED.get(), InitItems.SOUL_ESSENCE_BLESSED.get()));
 
-            //Handles Greater Depleted Ritual
-            else if (handleItemRitual(event, RitualTypes.RITUAL_BLESSED_SOUL_ESSENCE, InitItems.SOUL_ESSENCE_BLESSED_DEPLETED.get(), InitItems.SOUL_ESSENCE_BLESSED.get()));
+            //Handles Runes
+            else if (handleItemRitual(event, RitualTypes.RITUAL_BLESSED, InitItems.RUNE_CATALYST.get(), InitItems.RUNE_BLESSED_FLIGHT.get()));
+            else if (handleItemRitual(event, RitualTypes.RITUAL_CURSED, InitItems.RUNE_CATALYST.get(), InitItems.RUNE_CURSED_NIGHT.get()));
+            else if (handleItemRitual(event, RitualTypes.RITUAL_PURGED, InitItems.RUNE_CATALYST.get(), InitItems.RUNE_PURGED_LIGHT.get()));
+            else if (handleItemRitual(event, RitualTypes.RITUAL_FIRE, InitItems.RUNE_CATALYST.get(), InitItems.RUNE_GREAT_FIRE.get()));
+            else if (handleItemRitual(event, RitualTypes.RITUAL_LEVITATE, InitItems.RUNE_CATALYST.get(), InitItems.RUNE_GREAT_LEVITATION.get()));
+            else if (handleItemRitual(event, RitualTypes.RITUAL_ZEN, InitItems.RUNE_CATALYST.get(), InitItems.RUNE_ZEN_HEALING.get()));
+            else if (handleItemRitual(event, RitualTypes.RITUAL_INVIS, InitItems.RUNE_CATALYST.get(), InitItems.RUNE_GREAT_MAGIC.get()));
+            else if (handleItemRitual(event, RitualTypes.RITUAL_LUCK, InitItems.RUNE_CATALYST.get(), InitItems.RUNE_GREAT_LUCK.get()));
+            else if (handleItemRitual(event, RitualTypes.RITUAL_ENERGY, InitItems.RUNE_CATALYST.get(), InitItems.RUNE_GREAT_ENERGY.get()));
+            else if (handleItemRitual(event, RitualTypes.RITUAL_MINING, InitItems.RUNE_CATALYST.get(), InitItems.RUNE_GREAT_MINING.get()));
 
             //Handles Candle Rituals
             else if (handleCandleRitual(event, InitItems.RUNE_BLESSED_FLIGHT.get(), InitItems.CANDLE_BLESSED.get()));

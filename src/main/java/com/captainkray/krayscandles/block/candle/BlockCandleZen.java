@@ -41,7 +41,7 @@ public class BlockCandleZen extends BlockCandleBase {
 
     @Override
     public TileEntity createNewTileEntity(IBlockReader worldIn) {
-        return InitTileEntityTypes.CANDLE_ENERGY.get().create();
+        return InitTileEntityTypes.CANDLE_ZEN.get().create();
     }
 
 

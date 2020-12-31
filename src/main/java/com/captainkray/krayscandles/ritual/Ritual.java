@@ -2,6 +2,7 @@ package com.captainkray.krayscandles.ritual;
 
 import com.captainkray.krayscandles.tileentity.TileEntityStoneAlterTile;
 import com.captainkray.krayscandles.util.Location;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -28,9 +29,20 @@ public class Ritual {
         ingredients.add(ingredient);
     }
 
+    public void addRitual(Ritual ritual) {
+        ingredients.addAll(ritual.getIngredients());
+    }
+
     public boolean isRitualComplete(World world, BlockPos pos) {
 
+        List<ItemStack> ritualItems = new ArrayList<>();
+
         for (RitualIngredient ingredient : ingredients) {
+
+            if (ingredient instanceof RitualAlterIngredient) {
+                RitualAlterIngredient alterIngredient = (RitualAlterIngredient) ingredient;
+                ritualItems.add(alterIngredient.getRitualItem());
+            }
 
             if (!ingredient.isValid(world, pos)) {
                 return false;
@@ -41,10 +53,30 @@ public class Ritual {
 
             if (ingredient instanceof RitualAlterIngredient) {
                 Location location = new Location(world, pos.add(ingredient.getOffset()));
-                ((TileEntityStoneAlterTile) location.getTileEntity()).takeRitualStack();
+
+                for (ItemStack ritualItem : ritualItems) {
+
+                    if (ritualItem.isItemEqual(((TileEntityStoneAlterTile) location.getTileEntity()).getRitualStack())) {
+                        ritualItems.remove(ritualItem);
+                        break;
+                    }
+                }
             }
         }
 
-        return  true;
+        if (ritualItems.isEmpty()) {
+
+            for (RitualIngredient ingredient : ingredients) {
+
+                if (ingredient instanceof RitualAlterIngredient) {
+                    Location location = new Location(world, pos.add(ingredient.getOffset()));
+                    ((TileEntityStoneAlterTile) location.getTileEntity()).takeRitualStack();
+                }
+            }
+
+            return true;
+        }
+
+        return false;
     }
 }

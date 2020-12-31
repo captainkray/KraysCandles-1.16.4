@@ -9,6 +9,7 @@ public class InitRenderLayers {
 
         RenderTypeLookup.setRenderLayer(InitItems.SOYBEAN_CROP.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(InitItems.STONE_ALTAR_TILE.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(InitItems.STATUE.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(InitItems.CANDLE_SOY_MOUNT.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(InitItems.CANDLE_BLESSED.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(InitItems.CANDLE_WAX_BEE.get(), RenderType.getTranslucent());

@@ -87,6 +87,7 @@ public class InitItems {
     public static final RegistryObject<Item> SOYBEAN =                       regItem("soybean", () -> new ItemFoodBase(3, 1.2F));
 
     //RUNES
+    public static final RegistryObject<Item> RUNE_CATALYST =                 regItem("rune_catalyst", ItemBase::new);
     public static final RegistryObject<Item> RUNE_BLESSED_FLIGHT =           regItem("rune_blessed_flight", ItemBase::new);
     public static final RegistryObject<Item> RUNE_CURSED_NIGHT =             regItem("rune_cursed_night", ItemBase::new);
     public static final RegistryObject<Item> RUNE_PURGED_LIGHT =             regItem("rune_purged_light", ItemBase::new);
