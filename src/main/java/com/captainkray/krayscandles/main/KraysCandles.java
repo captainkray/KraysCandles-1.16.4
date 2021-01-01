@@ -38,6 +38,7 @@ public class KraysCandles {
         InitItems.init();
         InitTileEntityTypes.TILE_ENTITY_TYPES.register(MOD_EVENT_BUS);
         InitRecipes.RECIPES.register(MOD_EVENT_BUS);
+        InitParticles.PARTICLES.register(MOD_EVENT_BUS);
     }
 
     private void onCommonSetup(final FMLCommonSetupEvent event) {

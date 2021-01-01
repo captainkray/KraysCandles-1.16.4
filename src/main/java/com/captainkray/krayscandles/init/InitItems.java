@@ -142,6 +142,9 @@ public class InitItems {
     //CANDLE HOLDERS
     public static final RegistryObject<Block> CANDLE_SOY_MOUNT =              regBlock("candle_soy_mount", KraysCandles.TAB_CANDLE, BlockSoyCandleMount::new);
 
+    //TRAPPED SOUL LANTERN
+    public static final RegistryObject<Block> LANTERN_SOUL_TRAPPED =          regBlock("lantern_soul_trapped", KraysCandles.TAB_MAIN, BlockLanternSoulTrapped::new);
+
     //RITUAL
     public static final RegistryObject<Block> STONE_ALTAR_TILE =              regBlock("stone_altar_tile", KraysCandles.TAB_MAIN, BlockStoneAltarTile::new);
     public static final RegistryObject<Block> STATUE =                        regBlock("statue", KraysCandles.TAB_MAIN, BlockStatue::new);

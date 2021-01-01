@@ -1,5 +1,8 @@
 package com.captainkray.krayscandles.block.base;
 
+import com.captainkray.krayscandles.block.BlockLanternSoulTrapped;
+import com.captainkray.krayscandles.init.InitItems;
+import com.captainkray.krayscandles.tileentity.base.TileEntityCandleBase;
 import com.captainkray.krayscandles.util.Location;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -48,16 +51,43 @@ public abstract class BlockCandleBase extends BlockBase implements ITileEntityPr
         location.setBlock(location.getBlockState().with(LIT, value));
     }
 
+    public static void attachSoul(Location location, String soulType) {
+
+        if (location.getTileEntity() instanceof TileEntityCandleBase) {
+
+            TileEntityCandleBase candle = (TileEntityCandleBase) location.getTileEntity();
+            candle.setEntityFilterString(soulType);
+        }
+    }
+
     @Override
     public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
 
         Location location = new Location(world, pos);
         ItemStack stack = player.getHeldItem(hand);
 
-        if (stack.getItem() == Items.FLINT_AND_STEEL) {
+        boolean flintAndSteel = stack.getItem() == Items.FLINT_AND_STEEL;
+        boolean lantern = stack.getItem() == Items.LANTERN;
+        boolean soulLantern = stack.getItem() == InitItems.LANTERN_SOUL_TRAPPED.get().asItem();
+
+        if (flintAndSteel || lantern || soulLantern) {
+
+            if (flintAndSteel) {
+                stack.damageItem(1, player, (i) -> i.sendBreakAnimation(hand));
+                player.playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, 1, 1);
+            }
+
+            if (lantern || soulLantern) {
+
+                player.playSound(SoundEvents.ITEM_FIRECHARGE_USE, 1, 2);
+
+                if (soulLantern) {
+                    String trappedSoulString = BlockLanternSoulTrapped.getTrappedSoulString(stack);
+                    attachSoul(location, trappedSoulString);
+                }
+            }
+
             setLit(location, true);
-            player.playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, 1, 1);
-            stack.damageItem(1, player, (i) -> i.sendBreakAnimation(hand));
             return ActionResultType.SUCCESS;
         }
 

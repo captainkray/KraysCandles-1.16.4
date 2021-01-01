@@ -1,5 +1,6 @@
 package com.captainkray.krayscandles.block;
 
+import com.captainkray.krayscandles.block.base.BlockBase;
 import com.captainkray.krayscandles.util.ParticleHelper;
 import com.captainkray.krayscandles.util.ShapeBundle;
 import net.minecraft.block.*;
@@ -20,7 +21,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
-public class BlockStatue extends Block {
+public class BlockStatue extends BlockBase {
 
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 

@@ -1,13 +1,17 @@
 package com.captainkray.krayscandles.event;
 
+import com.captainkray.krayscandles.block.BlockLanternSoulTrappedItem;
 import com.captainkray.krayscandles.init.InitItems;
+import com.captainkray.krayscandles.util.ItemHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.Hand;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -58,6 +62,7 @@ public class WeaponKillEvents {
 
             LivingEntity sourceEntity = (LivingEntity) event.getSource().getImmediateSource();
             ItemStack heldItem = sourceEntity.getHeldItemMainhand();
+            ItemStack offItem = sourceEntity.getHeldItemOffhand();
 
             if (event.getEntity() instanceof LivingEntity) {
 
@@ -66,9 +71,25 @@ public class WeaponKillEvents {
                 if (heldItem.getItem() == InitItems.BLADE_NIGHT.get()) {
 
                     killedEntity.entityDropItem(InitItems.SOUL_ESSENCE_LESSER.get());
+                    event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.BLINDNESS, 300));
                     killedEntity.playSound(SoundEvents.AMBIENT_CAVE, 1, 1);
                     killedEntity.playSound(SoundEvents.ENTITY_GHAST_DEATH, 1, -7);
-                    event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.BLINDNESS, 300));
+
+                    if (offItem.getItem() == Items.SOUL_LANTERN) {
+
+                        ItemStack lanternSoulTrapped = new ItemStack(InitItems.LANTERN_SOUL_TRAPPED.get().asItem());
+
+                        if (offItem.getCount() == 1) {
+                            sourceEntity.setHeldItem(Hand.OFF_HAND, lanternSoulTrapped);
+                        }
+
+                        else {
+                            offItem.shrink(1);
+                            ItemHelper.spawnStackAtEntity(sourceEntity.world, sourceEntity, lanternSoulTrapped);
+                        }
+
+                        BlockLanternSoulTrappedItem.trapSoul(lanternSoulTrapped, killedEntity);
+                    }
                 }
             }
         }
