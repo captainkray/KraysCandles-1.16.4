@@ -30,8 +30,8 @@ public class BlockCandleZen extends BlockCandleBase {
     }
 
     @Override
-    public void renderFlame(World world, BlockState state, Vector3d pos) {
-        ParticleHelper.renderSmoke(world, pos.x - 0.3D, pos.y + 0.1D, pos.z + 0.05D);
+    public void renderFlame(World world, BlockPos pos, BlockState state, Vector3d particlePos) {
+        ParticleHelper.renderSmoke(world, particlePos.x - 0.3D, particlePos.y + 0.1D, particlePos.z + 0.05D);
     }
 
     @Override

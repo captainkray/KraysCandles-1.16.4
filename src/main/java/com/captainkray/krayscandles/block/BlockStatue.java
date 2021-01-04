@@ -1,6 +1,7 @@
 package com.captainkray.krayscandles.block;
 
 import com.captainkray.krayscandles.block.base.BlockBase;
+import com.captainkray.krayscandles.util.Location;
 import com.captainkray.krayscandles.util.ParticleHelper;
 import com.captainkray.krayscandles.util.ShapeBundle;
 import net.minecraft.block.*;
@@ -59,7 +60,7 @@ public class BlockStatue extends BlockBase {
             }
         }
 
-        ParticleHelper.renderFlame(world, pos.getX() + 0.5D + xOffset, pos.getY() + 1.7D, pos.getZ() + 0.5D + zOffset);
+        ParticleHelper.renderFlame(world, pos,pos.getX() + 0.5D + xOffset, pos.getY() + 1.7D, pos.getZ() + 0.5D + zOffset);
     }
 
     @Override

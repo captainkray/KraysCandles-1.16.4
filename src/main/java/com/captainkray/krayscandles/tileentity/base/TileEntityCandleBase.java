@@ -15,11 +15,12 @@ import net.minecraft.util.registry.Registry;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class TileEntityCandleBase extends TileEntityBase {
+public abstract class TileEntityCandleBase extends TileEntityBase implements ISoulFlame {
 
     private static final int EFFECT_RANGE = 5;
 
-    private String entityFilterString;
+    private String entitySoulType = "";
+    private String entitySoulName = "";
 
     public TileEntityCandleBase(TileEntityType<?> tileEntityType) {
         super(tileEntityType);
@@ -27,13 +28,25 @@ public abstract class TileEntityCandleBase extends TileEntityBase {
 
     public abstract EffectInstance[] getCandleEffects();
 
-    public EntityType<?> getEntityTypeFilter() {
-        Optional<EntityType<?>> entityType = Registry.ENTITY_TYPE.getOptional(new ResourceLocation(entityFilterString));
+    @Override
+    public String getSoulType() {
+        return entitySoulType;
+    }
+
+    @Override
+    public String getSoulName() {
+        return entitySoulName;
+    }
+
+    public EntityType<?> getEntityTypeFromSoul() {
+        Optional<EntityType<?>> entityType = Registry.ENTITY_TYPE.getOptional(new ResourceLocation(entitySoulType));
         return entityType.orElse(null);
     }
 
-    public void setEntityFilterString(String entityFilterString) {
-        this.entityFilterString = entityFilterString;
+    @Override
+    public void setSoul(String soulType, String soulName) {
+        this.entitySoulType = soulType;
+        this.entitySoulName = soulName;
     }
 
     @Override
@@ -56,7 +69,7 @@ public abstract class TileEntityCandleBase extends TileEntityBase {
 
                     for (LivingEntity livingEntity : entityArray) {
 
-                        EntityType<?> type = getEntityTypeFilter();
+                        EntityType<?> type = getEntityTypeFromSoul();
 
                         if (type == null || livingEntity.getType().equals(type)) {
 
@@ -73,13 +86,14 @@ public abstract class TileEntityCandleBase extends TileEntityBase {
     @Override
     public void read (BlockState state, CompoundNBT nbt) {
         super.read(state, nbt);
-
-        entityFilterString = nbt.getString("entity_filter_string");
+        entitySoulType = nbt.getString("entity_soul_type");
+        entitySoulName = nbt.getString("entity_soul_name");
     }
 
     @Override
     public CompoundNBT write (CompoundNBT nbt) {
-        nbt.putString("entity_filter_string", entityFilterString);
+        nbt.putString("entity_soul_type", entitySoulType);
+        nbt.putString("entity_soul_name", entitySoulName);
         return super.write(nbt);
     }
 }

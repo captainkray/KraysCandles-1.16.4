@@ -21,10 +21,11 @@ public class ItemHelper {
         spawnStack(world, (float) entity.getPosition().getX() + 0.5F, (float) entity.getPosition().getY() + 0.5F, (float) entity.getPosition().getZ() + 0.5F, stack);
     }
 
-    public static void spawnStack(World world, float x, float y, float z, ItemStack stack) {
+    public static ItemEntity spawnStack(World world, float x, float y, float z, ItemStack stack) {
         ItemEntity item = new ItemEntity(world, x, y, z, stack);
         item.setNoPickupDelay();
         item.setMotion(0, 0, 0);
         world.addEntity(item);
+        return item;
     }
 }

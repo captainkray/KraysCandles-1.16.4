@@ -1,16 +1,21 @@
 package com.captainkray.krayscandles.main;
 
+import com.captainkray.krayscandles.entity.EntityWraith;
 import com.captainkray.krayscandles.init.*;
 import com.captainkray.krayscandles.render.RenderCandleMount;
 import com.captainkray.krayscandles.render.RenderStoneAlterTile;
+import com.captainkray.krayscandles.render.RenderWraith;
 import com.captainkray.krayscandles.tab.KCTabCandle;
 import com.captainkray.krayscandles.tab.KCTabMain;
 import com.captainkray.krayscandles.tab.KCTabTool;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -38,11 +43,16 @@ public class KraysCandles {
         InitItems.init();
         InitTileEntityTypes.TILE_ENTITY_TYPES.register(MOD_EVENT_BUS);
         InitRecipes.RECIPES.register(MOD_EVENT_BUS);
+        InitEntityTypes.ENTITY_TYPES.register(MOD_EVENT_BUS);
         InitParticles.PARTICLES.register(MOD_EVENT_BUS);
     }
 
     private void onCommonSetup(final FMLCommonSetupEvent event) {
         InitEvents.init();
+
+        DeferredWorkQueue.runLater(() -> {
+            GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH.get(), EntityWraith.setCustomAttributes().create());
+        });
     }
 
     private void onClientSetup(final FMLClientSetupEvent event) {
@@ -53,5 +63,7 @@ public class KraysCandles {
         ClientRegistry.bindTileEntityRenderer(InitTileEntityTypes.STONE_ALTER_TILE.get(), RenderStoneAlterTile::new);
 
         ItemModelsProperties.registerProperty(InitItems.CANDLE_SOY_COLORED_ITEM.get(), new ResourceLocation("color"), (stack, world, player) -> stack.getDamage());
+
+        RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH.get(), RenderWraith::new);
     }
 }

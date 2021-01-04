@@ -55,7 +55,7 @@ public class BlockSoyCandleMount extends BlockCandleBase {
     }
 
     @Override
-    public void renderFlame(World world, BlockState state, Vector3d pos) {
+    public void renderFlame(World world, BlockPos pos, BlockState state, Vector3d particlePos) {
 
         double xOffset = 0.0D;
         double zOffset = 0.2D;
@@ -77,7 +77,7 @@ public class BlockSoyCandleMount extends BlockCandleBase {
             }
         }
 
-        ParticleHelper.renderFlame(world, pos.x + xOffset, pos.y + 0.3D, pos.z + zOffset);
+        ParticleHelper.renderFlame(world, pos,  particlePos.x + xOffset, particlePos.y + 0.3D, particlePos.z + zOffset);
     }
 
     @Override

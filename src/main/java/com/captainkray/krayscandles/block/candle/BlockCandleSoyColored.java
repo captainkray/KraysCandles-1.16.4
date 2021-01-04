@@ -4,6 +4,7 @@ import com.captainkray.krayscandles.block.base.BlockCandleBase;
 import com.captainkray.krayscandles.block.base.KCBlockStates;
 import com.captainkray.krayscandles.init.InitItems;
 import com.captainkray.krayscandles.init.InitTileEntityTypes;
+import com.captainkray.krayscandles.util.Location;
 import com.captainkray.krayscandles.util.ParticleHelper;
 import com.captainkray.krayscandles.util.ShapeBundle;
 import net.minecraft.block.Block;
@@ -43,8 +44,8 @@ public class BlockCandleSoyColored extends BlockCandleBase {
     }
 
     @Override
-    public void renderFlame(World world, BlockState state, Vector3d pos) {
-        ParticleHelper.renderFlame(world, pos.x, pos.y + 0.2D, pos.z);
+    public void renderFlame(World world, BlockPos pos, BlockState state, Vector3d particlePos) {
+        ParticleHelper.renderFlame(world, pos,  particlePos.x, particlePos.y + 0.2D, particlePos.z);
     }
 
     @Override

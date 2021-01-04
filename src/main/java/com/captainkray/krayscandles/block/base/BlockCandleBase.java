@@ -1,7 +1,8 @@
 package com.captainkray.krayscandles.block.base;
 
-import com.captainkray.krayscandles.block.BlockLanternSoulTrapped;
+import com.captainkray.krayscandles.block.BlockLanternSoulTrappedItem;
 import com.captainkray.krayscandles.init.InitItems;
+import com.captainkray.krayscandles.tileentity.base.ISoulFlame;
 import com.captainkray.krayscandles.tileentity.base.TileEntityCandleBase;
 import com.captainkray.krayscandles.util.Location;
 import net.minecraft.block.Block;
@@ -45,18 +46,18 @@ public abstract class BlockCandleBase extends BlockBase implements ITileEntityPr
     }
 
     public abstract VoxelShape getCandleShape(BlockState state);
-    public abstract void renderFlame(World world, BlockState state, Vector3d pos);
+    public abstract void renderFlame(World world, BlockPos pos, BlockState state, Vector3d particlePos);
 
     public static void setLit(Location location, boolean value) {
         location.setBlock(location.getBlockState().with(LIT, value));
     }
 
-    public static void attachSoul(Location location, String soulType) {
+    public static void attachSoul(Location location, String soulType, String soulName) {
 
         if (location.getTileEntity() instanceof TileEntityCandleBase) {
 
             TileEntityCandleBase candle = (TileEntityCandleBase) location.getTileEntity();
-            candle.setEntityFilterString(soulType);
+            candle.setSoul(soulType, soulName);
         }
     }
 
@@ -68,27 +69,41 @@ public abstract class BlockCandleBase extends BlockBase implements ITileEntityPr
 
         boolean flintAndSteel = stack.getItem() == Items.FLINT_AND_STEEL;
         boolean lantern = stack.getItem() == Items.LANTERN;
-        boolean soulLantern = stack.getItem() == InitItems.LANTERN_SOUL_TRAPPED.get().asItem();
+        boolean soulLantern = stack.getItem() == Items.SOUL_LANTERN;
+        boolean trappedSoulLantern = stack.getItem() == InitItems.LANTERN_SOUL_TRAPPED.get().asItem();
 
-        if (flintAndSteel || lantern || soulLantern) {
+        if (!state.get(LIT)) {
 
-            if (flintAndSteel) {
-                stack.damageItem(1, player, (i) -> i.sendBreakAnimation(hand));
-                player.playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, 1, 1);
-            }
+            if (flintAndSteel || lantern || soulLantern || trappedSoulLantern) {
 
-            if (lantern || soulLantern) {
-
-                player.playSound(SoundEvents.ITEM_FIRECHARGE_USE, 1, 2);
-
-                if (soulLantern) {
-                    String trappedSoulString = BlockLanternSoulTrapped.getTrappedSoulString(stack);
-                    attachSoul(location, trappedSoulString);
+                if (flintAndSteel) {
+                    stack.damageItem(1, player, (i) -> i.sendBreakAnimation(hand));
+                    player.playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, 1, 1);
                 }
-            }
 
-            setLit(location, true);
-            return ActionResultType.SUCCESS;
+                if (lantern || soulLantern || trappedSoulLantern) {
+
+                    player.playSound(SoundEvents.ITEM_FIRECHARGE_USE, 1, 2);
+
+                    if (trappedSoulLantern) {
+                        String soulType = BlockLanternSoulTrappedItem.getSoulType(stack);
+                        String soulName = BlockLanternSoulTrappedItem.getSoulName(stack);
+                        attachSoul(location, soulType, soulName);
+                    }
+                }
+
+                setLit(location, true);
+                return ActionResultType.SUCCESS;
+            }
+        }
+
+        else {
+
+            if (soulLantern) {
+
+                BlockLanternSoulTrappedItem.trapSoul(player, stack, ((ISoulFlame)location.getTileEntity()).getEntityTypeFromSoul());
+                return ActionResultType.SUCCESS;
+            }
         }
 
         return ActionResultType.PASS;
@@ -113,7 +128,7 @@ public abstract class BlockCandleBase extends BlockBase implements ITileEntityPr
     public void animateTick(BlockState state, World world, BlockPos pos, Random rand) {
 
         if (state.get(LIT)) {
-            renderFlame(world, state, new Vector3d(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D));
+            renderFlame(world, pos, state, new Vector3d(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D));
         }
     }
 

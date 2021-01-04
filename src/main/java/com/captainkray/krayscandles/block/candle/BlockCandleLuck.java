@@ -2,12 +2,13 @@ package com.captainkray.krayscandles.block.candle;
 
 import com.captainkray.krayscandles.block.base.BlockCandleBase;
 import com.captainkray.krayscandles.init.InitTileEntityTypes;
+import com.captainkray.krayscandles.util.Location;
 import com.captainkray.krayscandles.util.ParticleHelper;
 import com.captainkray.krayscandles.util.ShapeBundle;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
@@ -29,8 +30,8 @@ public class BlockCandleLuck extends BlockCandleBase {
     }
 
     @Override
-    public void renderFlame(World world, BlockState state, Vector3d pos) {
-        ParticleHelper.renderFlame(world, pos.x, pos.y + 0.05D, pos.z);
+    public void renderFlame(World world, BlockPos pos, BlockState state, Vector3d particlePos) {
+        ParticleHelper.renderFlame(world, pos,  particlePos.x, particlePos.y + 0.05D, particlePos.z);
     }
 
     @Override

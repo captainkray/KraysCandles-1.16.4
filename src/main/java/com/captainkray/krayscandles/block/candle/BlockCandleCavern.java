@@ -2,6 +2,7 @@ package com.captainkray.krayscandles.block.candle;
 
 import com.captainkray.krayscandles.block.base.BlockCandleBase;
 import com.captainkray.krayscandles.init.InitTileEntityTypes;
+import com.captainkray.krayscandles.util.Location;
 import com.captainkray.krayscandles.util.ParticleHelper;
 import com.captainkray.krayscandles.util.ShapeBundle;
 import net.minecraft.block.Block;
@@ -51,19 +52,19 @@ public class BlockCandleCavern extends BlockCandleBase {
     }
 
     @Override
-    public void renderFlame(World world, BlockState state, Vector3d pos) {
+    public void renderFlame(World world, BlockPos pos, BlockState state, Vector3d particlePos) {
 
-        ParticleHelper.renderFlame(world, pos.x + 0.2D, pos.y + 0.3D, pos.z - 0.3D);
-        ParticleHelper.renderFlame(world, pos.x, pos.y + 0.2D, pos.z);
-        ParticleHelper.renderFlame(world, pos.x + 0.3D, pos.y + 0.15D, pos.z + 0.125D);
-        ParticleHelper.renderFlame(world, pos.x - 0.25D, pos.y + 0.1D, pos.z + 0.2D);
-        ParticleHelper.renderFlame(world, pos.x - 0.375D, pos.y, pos.z - 0.375D);
-        ParticleHelper.renderFlame(world, pos.x - 0.35D, pos.y, pos.z + 0.4D);
-        ParticleHelper.renderFlame(world, pos.x + 0.4D, pos.y, pos.z + 0.35D);
-        ParticleHelper.renderFlame(world, pos.x - 0.1D, pos.y, pos.z - 0.4D);
-        ParticleHelper.renderFlame(world, pos.x + 0.35D, pos.y - 0.1D, pos.z - 0.15D);
-        ParticleHelper.renderFlame(world, pos.x + 0.025D, pos.y - 0.1D, pos.z + 0.35D);
-        ParticleHelper.renderFlame(world, pos.x - 0.35D, pos.y - 0.15D, pos.z - 0.075D);
+        ParticleHelper.renderFlame(world, pos, particlePos.x + 0.2D, particlePos.y + 0.3D, particlePos.z - 0.3D);
+        ParticleHelper.renderFlame(world, pos, particlePos.x, particlePos.y + 0.2D, particlePos.z);
+        ParticleHelper.renderFlame(world, pos,  particlePos.x + 0.3D, particlePos.y + 0.15D, particlePos.z + 0.125D);
+        ParticleHelper.renderFlame(world, pos,  particlePos.x - 0.25D, particlePos.y + 0.1D, particlePos.z + 0.2D);
+        ParticleHelper.renderFlame(world, pos,  particlePos.x - 0.375D, particlePos.y, particlePos.z - 0.375D);
+        ParticleHelper.renderFlame(world, pos,  particlePos.x - 0.35D, particlePos.y, particlePos.z + 0.4D);
+        ParticleHelper.renderFlame(world, pos,  particlePos.x + 0.4D, particlePos.y, particlePos.z + 0.35D);
+        ParticleHelper.renderFlame(world, pos,  particlePos.x - 0.1D, particlePos.y, particlePos.z - 0.4D);
+        ParticleHelper.renderFlame(world, pos,  particlePos.x + 0.35D, particlePos.y - 0.1D, particlePos.z - 0.15D);
+        ParticleHelper.renderFlame(world, pos,  particlePos.x + 0.025D, particlePos.y - 0.1D, particlePos.z + 0.35D);
+        ParticleHelper.renderFlame(world, pos,  particlePos.x - 0.35D, particlePos.y - 0.15D, particlePos.z - 0.075D);
     }
 
     @Override

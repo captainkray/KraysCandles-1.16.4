@@ -2,6 +2,7 @@ package com.captainkray.krayscandles.block.candle;
 
 import com.captainkray.krayscandles.block.base.BlockCandleBase;
 import com.captainkray.krayscandles.init.InitTileEntityTypes;
+import com.captainkray.krayscandles.util.Location;
 import com.captainkray.krayscandles.util.ParticleHelper;
 import com.captainkray.krayscandles.util.ShapeBundle;
 import net.minecraft.block.Block;
@@ -31,8 +32,8 @@ public class BlockCandlePurged extends BlockCandleBase {
     }
 
     @Override
-    public void renderFlame(World world, BlockState state, Vector3d pos) {
-        ParticleHelper.renderFlame(world, pos.x, pos.y + 0.3D, pos.z);
+    public void renderFlame(World world, BlockPos pos, BlockState state, Vector3d particlePos) {
+        ParticleHelper.renderFlame(world, pos,  particlePos.x, particlePos.y + 0.3D, particlePos.z);
     }
 
     @Override

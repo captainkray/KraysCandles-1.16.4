@@ -52,6 +52,7 @@ public class Ritual {
         for (RitualIngredient ingredient : ingredients) {
 
             if (ingredient instanceof RitualAlterIngredient) {
+
                 Location location = new Location(world, pos.add(ingredient.getOffset()));
 
                 for (ItemStack ritualItem : ritualItems) {
