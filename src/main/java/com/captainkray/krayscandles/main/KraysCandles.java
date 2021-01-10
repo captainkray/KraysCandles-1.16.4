@@ -51,7 +51,12 @@ public class KraysCandles {
         InitEvents.init();
 
         DeferredWorkQueue.runLater(() -> {
-            GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH.get(), EntityWraith.setCustomAttributes().create());
+            GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_FIRE.get(), EntityWraith.setCustomAttributes().create());
+            GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_WATER.get(), EntityWraith.setCustomAttributes().create());
+            GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_AIR.get(), EntityWraith.setCustomAttributes().create());
+            GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_EXPLOSION.get(), EntityWraith.setCustomAttributes().create());
+            GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_MAGIC.get(), EntityWraith.setCustomAttributes().create());
+            GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_MOB.get(), EntityWraith.setCustomAttributes().create());
         });
     }
 
@@ -64,6 +69,11 @@ public class KraysCandles {
 
         ItemModelsProperties.registerProperty(InitItems.CANDLE_SOY_COLORED_ITEM.get(), new ResourceLocation("color"), (stack, world, player) -> stack.getDamage());
 
-        RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH.get(), RenderWraith::new);
+        RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH_FIRE.get(), RenderWraith::new);
+        RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH_WATER.get(), RenderWraith::new);
+        RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH_AIR.get(), RenderWraith::new);
+        RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH_EXPLOSION.get(), RenderWraith::new);
+        RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH_MAGIC.get(), RenderWraith::new);
+        RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH_MOB.get(), RenderWraith::new);
     }
 }

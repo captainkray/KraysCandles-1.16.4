@@ -1,6 +1,5 @@
 package com.captainkray.krayscandles.entity;
 
-import com.captainkray.krayscandles.init.InitEntityTypes;
 import com.captainkray.krayscandles.init.InitParticles;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
@@ -8,6 +7,7 @@ import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.monster.BlazeEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
@@ -26,26 +26,21 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class EntityWraith extends MonsterEntity {
+public abstract class EntityWraith extends MonsterEntity {
 
     private static final DataParameter<String> PLAYER_NAME = EntityDataManager.createKey(EntityWraith.class, DataSerializers.STRING);
-    private static final DataParameter<Integer> TYPE_ID = EntityDataManager.createKey(EntityWraith.class, DataSerializers.VARINT);
 
     public EntityWraith(EntityType<? extends MonsterEntity> type, World world) {
         super(type, world);
     }
 
-    public EntityWraith(World world, String playerName, WraithType wraithType, int x, int y, int z) {
-        super(InitEntityTypes.WRAITH.get(), world);
+    public EntityWraith(EntityType<? extends MonsterEntity> type, World world, String playerName, double x, double y, double z) {
+        super(type, world);
         setLocationAndAngles(x, y, z, 0, 0);
-
         dataManager.set(PLAYER_NAME, playerName);
-        dataManager.set(TYPE_ID, wraithType.getID());
     }
 
-    public WraithType getWraithType() {
-        return WraithType.fromID(dataManager.get(TYPE_ID));
-    }
+    public abstract WraithType getWraithType();
 
     public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
         return MobEntity.func_233666_p_()
@@ -56,11 +51,13 @@ public class EntityWraith extends MonsterEntity {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, true));
-        this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
-        this.goalSelector.addGoal(7, new LookAtGoal(this, PlayerEntity.class, 6.0F));
+        this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0D, true));
+        this.goalSelector.addGoal(5, new MoveTowardsRestrictionGoal(this, 1.0D));
+        this.goalSelector.addGoal(7, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 0.0F));
+        this.goalSelector.addGoal(8, new LookAtGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
-        this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setCallsForHelp());
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
     }
 
     @Override
@@ -80,6 +77,11 @@ public class EntityWraith extends MonsterEntity {
 
     @Override
     public ITextComponent getDisplayName() {
+
+        if (dataManager.get(PLAYER_NAME).isEmpty()) {
+            return new StringTextComponent("Wraith of " + getWraithType().getName());
+        }
+
         return new StringTextComponent(dataManager.get(PLAYER_NAME) + "'s Wraith of " + getWraithType().getName());
     }
 
@@ -87,19 +89,16 @@ public class EntityWraith extends MonsterEntity {
     protected void registerData() {
         super.registerData();
         dataManager.register(PLAYER_NAME, "");
-        dataManager.register(TYPE_ID, 0);
     }
 
     @Override
     public void readAdditional(CompoundNBT nbt) {
         dataManager.set(PLAYER_NAME, nbt.getString("player_name"));
-        dataManager.set(TYPE_ID, nbt.getInt("type_id"));
     }
 
     @Override
     public void writeAdditional(CompoundNBT nbt) {
         nbt.putString("player_name", dataManager.get(PLAYER_NAME));
-        nbt.putInt("type_id", dataManager.get(TYPE_ID));
     }
 
     @Override
@@ -113,8 +112,18 @@ public class EntityWraith extends MonsterEntity {
     }
 
     @Override
+    public boolean isImmuneToExplosions() {
+        return true;
+    }
+
+    @Override
+    public boolean isImmuneToFire() {
+        return true;
+    }
+
+    @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_HUSK_AMBIENT;
+        return SoundEvents.ENTITY_BLAZE_AMBIENT;
     }
 
     @Override
@@ -124,7 +133,7 @@ public class EntityWraith extends MonsterEntity {
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_HUSK_DEATH;
+        return SoundEvents.ENTITY_BLAZE_DEATH;
     }
 
     @Override

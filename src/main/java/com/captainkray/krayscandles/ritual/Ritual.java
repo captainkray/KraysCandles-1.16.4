@@ -1,18 +1,22 @@
 package com.captainkray.krayscandles.ritual;
 
+import com.captainkray.krayscandles.block.base.BlockCandleBase;
 import com.captainkray.krayscandles.tileentity.TileEntityStoneAlterTile;
+import com.captainkray.krayscandles.tileentity.base.TileEntityCandleBase;
 import com.captainkray.krayscandles.util.Location;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Ritual {
 
-    private final List<RitualIngredient> ingredients = new ArrayList<>();
+    private List<RitualIngredient> ingredients = new ArrayList<>();
 
     public List<RitualIngredient> getIngredients() {
         return ingredients;
@@ -33,15 +37,32 @@ public class Ritual {
         ingredients.addAll(ritual.getIngredients());
     }
 
+    public void rotateRitual() {
+
+        List<RitualIngredient> rotatedIngredients = new ArrayList<>();
+
+        for (RitualIngredient ingredient : ingredients) {
+            rotatedIngredients.add(ingredient.rotate(Rotation.CLOCKWISE_90));
+        }
+
+        ingredients = rotatedIngredients;
+    }
+
     public boolean isRitualComplete(World world, BlockPos pos) {
 
         List<ItemStack> ritualItems = new ArrayList<>();
+        List<EntityType<?>> soulTypes = new ArrayList<>();
 
         for (RitualIngredient ingredient : ingredients) {
 
             if (ingredient instanceof RitualAlterIngredient) {
                 RitualAlterIngredient alterIngredient = (RitualAlterIngredient) ingredient;
                 ritualItems.add(alterIngredient.getRitualItem());
+            }
+
+            else if (ingredient instanceof RitualSoulCandleIngredient) {
+                RitualSoulCandleIngredient candleIngredient = (RitualSoulCandleIngredient) ingredient;
+                soulTypes.add(candleIngredient.getSoulType());
             }
 
             if (!ingredient.isValid(world, pos)) {
@@ -63,15 +84,38 @@ public class Ritual {
                     }
                 }
             }
+
+            if (ingredient instanceof RitualSoulCandleIngredient) {
+
+                Location location = new Location(world, pos.add(ingredient.getOffset()));
+
+                for (EntityType<?> soulType : soulTypes) {
+
+                    TileEntityCandleBase candle = (TileEntityCandleBase) location.getTileEntity();
+
+                    if (candle.getEntityTypeFromSoul() != null) {
+
+                        if (soulType == candle.getEntityTypeFromSoul()) {
+                            soulTypes.remove(soulType);
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
-        if (ritualItems.isEmpty()) {
+        if (ritualItems.isEmpty() && soulTypes.isEmpty()) {
 
             for (RitualIngredient ingredient : ingredients) {
 
                 if (ingredient instanceof RitualAlterIngredient) {
                     Location location = new Location(world, pos.add(ingredient.getOffset()));
                     ((TileEntityStoneAlterTile) location.getTileEntity()).takeRitualStack();
+                }
+
+                else if (ingredient instanceof RitualSoulCandleIngredient) {
+                    Location location = new Location(world, pos.add(ingredient.getOffset()));
+                    BlockCandleBase.setLit(location, false);
                 }
             }
 

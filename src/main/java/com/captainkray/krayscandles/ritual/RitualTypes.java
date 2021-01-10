@@ -23,6 +23,9 @@ public class RitualTypes {
 
     public static final Ritual RITUAL_CANDLE = new Ritual();
 
+    public static final Ritual RITUAL_WRAITH_NS = new Ritual();
+    public static final Ritual RITUAL_WRAITH_EW = new Ritual();
+
     static {
 
         RITUAL_ESSENCE.addIngredient(new RitualIngredient(InitItems.CANDLE_WAX_BEE.get(), 0, 0, 0));
@@ -60,5 +63,7 @@ public class RitualTypes {
         RITUAL_CANDLE.addSymmetricalIngredient(new RitualAlterIngredient(new ItemStack(InitItems.WAX_CHUNK_CURSED_SMALL.get()), 2, 0, 2));
         RITUAL_CANDLE.addSymmetricalIngredient(new RitualCandleIngredient(3, 0, 1));
         RITUAL_CANDLE.addSymmetricalIngredient(new RitualCandleIngredient(1, 0, 3));
+
+        //RITUAL_WRAITH.addIngredient(new RitualSoulCandleIngredient(InitEntityTypes.WRAITH_FIRE.get(), 3, 3, 0));
     }
 }

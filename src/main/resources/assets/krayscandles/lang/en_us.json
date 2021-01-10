@@ -158,6 +158,16 @@
 
 
 
+  "entity.krayscandles.wraith_fire": "Wraith of Fire",
+  "entity.krayscandles.wraith_water": "Wraith of Water",
+  "entity.krayscandles.wraith_air": "Wraith of Air",
+  "entity.krayscandles.wraith_explosion": "Wraith of Explosions",
+  "entity.krayscandles.wraith_magic": "Wraith of Magic",
+  "entity.krayscandles.wraith_mob": "Wraith of Monsters",
+
+
+
+
 
   "itemGroup.krayscandles.tabMain": "Kray's Candles - Main",
   "itemGroup.krayscandles.tabCandle": "Kray's Candles - Candles",

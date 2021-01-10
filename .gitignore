@@ -24,7 +24,6 @@ eclipse/
 bin/
 tmp/
 *.bat
-*.properties
 *.tmp
 *.bak
 *.swp
