@@ -12,7 +12,6 @@ import net.minecraft.block.LanternBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
@@ -62,24 +61,21 @@ public class BlockLanternSoulTrapped extends LanternBlock implements ITileEntity
     }
 
     @Override
-    public void onBlockHarvested(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+    public void onReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving) {
 
-        if (!player.isCreative() && !player.isSpectator()) {
+        Location location = new Location(world, pos);
 
-            Location location = new Location(world, pos);
+        if (location.getTileEntity() instanceof TileEntityLanternSoulTrapped) {
 
-            if (location.getTileEntity() instanceof TileEntityLanternSoulTrapped) {
+            TileEntityLanternSoulTrapped lantern = (TileEntityLanternSoulTrapped) location.getTileEntity();
 
-                TileEntityLanternSoulTrapped lantern = (TileEntityLanternSoulTrapped) location.getTileEntity();
-
-                ItemEntity itemEntity = ItemHelper.spawnStack(world, pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, new ItemStack((this.asItem())));
-                ItemStack stack = itemEntity.getItem();
-                BlockLanternSoulTrappedItem.setSoul(stack, lantern.getEntityTypeFromSoul());
-                itemEntity.setItem(stack);
-            }
+            ItemEntity itemEntity = ItemHelper.spawnStack(world, pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, new ItemStack((this.asItem())));
+            ItemStack stack = itemEntity.getItem();
+            BlockLanternSoulTrappedItem.setSoul(stack, lantern.getEntityTypeFromSoul());
+            itemEntity.setItem(stack);
         }
 
-        super.onBlockHarvested(world, pos, state, player);
+        super.onReplaced(state, world, pos, newState, isMoving);
     }
 
     @Override

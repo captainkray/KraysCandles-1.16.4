@@ -2,9 +2,7 @@ package com.captainkray.krayscandles.block.candle;
 
 import com.captainkray.krayscandles.block.base.BlockCandleBase;
 import com.captainkray.krayscandles.block.base.KCBlockStates;
-import com.captainkray.krayscandles.init.InitItems;
 import com.captainkray.krayscandles.init.InitTileEntityTypes;
-import com.captainkray.krayscandles.util.Location;
 import com.captainkray.krayscandles.util.ParticleHelper;
 import com.captainkray.krayscandles.util.ShapeBundle;
 import net.minecraft.block.Block;
@@ -34,6 +32,8 @@ public class BlockCandleSoyColored extends BlockCandleBase {
         SHAPE.addShape(Block.makeCuboidShape(7, 0, 7, 9, 8, 9));
     }
 
+    public void addDrops(BlockState state, World world, BlockPos pos, List<ItemStack> list) {}
+
     public BlockCandleSoyColored() {
         setDefaultState(stateContainer.getBaseState().with(LIT, false).with(COLOR, DyeColor.WHITE));
     }
@@ -51,13 +51,6 @@ public class BlockCandleSoyColored extends BlockCandleBase {
     @Override
     public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
         world.setBlockState(pos, state.with(COLOR, DyeColor.byId(stack.getDamage())));
-    }
-
-    @Override
-    public void addDrops(BlockState state, World world, BlockPos pos, List<ItemStack> list) {
-        ItemStack stack = new ItemStack(InitItems.CANDLE_SOY_COLORED_ITEM.get());
-        stack.setDamage(state.get(COLOR).getId());
-        list.add(stack);
     }
 
     @Override

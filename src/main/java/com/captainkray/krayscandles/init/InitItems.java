@@ -150,7 +150,7 @@ public class InitItems {
     public static final RegistryObject<Block> STATUE =                        regBlock("statue", KraysCandles.TAB_MAIN, BlockStatue::new);
 
     //CROPS
-    public static final RegistryObject<Block> SOYBEAN_CROP =                  regBlock("soybean_crop", KraysCandles.TAB_MAIN, BlockSoybeanCrop::new);
+    public static final RegistryObject<Block> SOYBEAN_CROP =                  regBlock("soybean_crop", KraysCandles.TAB_MAIN, () -> new BlockCropBase(SOYBEAN));
 
     //WAXED BLOCKS
     public static final RegistryObject<Block> WAXED_RED_SAND =                regBlock("waxed_red_sand", KraysCandles.TAB_MAIN, BlockWaxed::new);

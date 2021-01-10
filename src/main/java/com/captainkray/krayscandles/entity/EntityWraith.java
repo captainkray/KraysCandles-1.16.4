@@ -122,6 +122,11 @@ public abstract class EntityWraith extends MonsterEntity {
     }
 
     @Override
+    public boolean canBreatheUnderwater() {
+        return true;
+    }
+
+    @Override
     protected SoundEvent getAmbientSound() {
         return SoundEvents.ENTITY_BLAZE_AMBIENT;
     }
