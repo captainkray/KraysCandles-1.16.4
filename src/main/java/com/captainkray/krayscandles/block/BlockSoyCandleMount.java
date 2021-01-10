@@ -14,12 +14,14 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.FlintAndSteelItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -84,33 +86,35 @@ public class BlockSoyCandleMount extends BlockCandleBase {
     public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
 
         Location location = new Location(world, pos);
-        ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
+        ItemStack heldStack = player.getHeldItem(Hand.MAIN_HAND);
 
         if (location.getTileEntity() != null && location.getTileEntity() instanceof TileEntityCandleMount) {
 
             TileEntityCandleMount mount = (TileEntityCandleMount) location.getTileEntity();
 
-            if (mount.getCandleStack().isEmpty() && stack.getItem() == InitItems.CANDLE_SOY_COLORED_ITEM.get()) {
-                mount.placeCandle(stack.getDamage());
-                stack.shrink(1);
+            if (!mount.getCandleStack().isEmpty()) {
+
+                if (heldStack.isEmpty()) {
+                    ItemHelper.spawnStackAtEntity(world, player, mount.getCandleStack());
+                    mount.takeCandle();
+                    setLit(location, false);
+                    mount.setSoul("", "");
+                    player.playSound(SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM, 1, 1);
+                    return ActionResultType.SUCCESS;
+                }
+
+                return super.onBlockActivated(state, world, pos, player, hand, hit);
+            }
+
+            else if (mount.getCandleStack().isEmpty() && heldStack.getItem() == InitItems.CANDLE_SOY_COLORED_ITEM.get()) {
+                mount.placeCandle(heldStack.getDamage());
+                heldStack.shrink(1);
                 player.playSound(SoundEvents.ENTITY_ITEM_FRAME_ADD_ITEM, 1, 1);
                 return ActionResultType.SUCCESS;
             }
-
-            else if (!mount.getCandleStack().isEmpty() && !(stack.getItem() instanceof FlintAndSteelItem)) {
-                ItemHelper.spawnStackAtEntity(world, player, mount.getCandleStack());
-                mount.takeCandle();
-                setLit(location, false);
-                player.playSound(SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM, 1, 1);
-                return ActionResultType.SUCCESS;
-            }
         }
 
-        if (stack.getItem() instanceof FlintAndSteelItem) {
-            return ActionResultType.FAIL;
-        }
-
-        return super.onBlockActivated(state, world, pos, player, hand, hit);
+        return ActionResultType.FAIL;
     }
 
     @Override
