@@ -1,6 +1,7 @@
 package com.captainkray.krayscandles.entity;
 
 import com.captainkray.krayscandles.init.InitParticles;
+import com.captainkray.krayscandles.init.InitSounds;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
@@ -128,17 +129,17 @@ public abstract class EntityWraith extends MonsterEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_BLAZE_AMBIENT;
+        return InitSounds.WRAITH_AMBIENT.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return SoundEvents.ENTITY_HUSK_HURT;
+        return InitSounds.WRAITH_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_BLAZE_DEATH;
+        return InitSounds.WRAITH_DEATH.get();
     }
 
     @Override

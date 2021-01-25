@@ -1,0 +1,32 @@
+{
+  "entity.wraith_death": {
+    "category": "entity",
+    "subtitle": "entity.wraith_death.sub",
+    "sounds": [
+      {
+        "name": "krayscandles:entity/wraith_death",
+        "stream": true
+      }
+    ]
+  },
+  "entity.wraith_hurt": {
+    "category": "entity",
+    "subtitle": "entity.wraith_hurt.sub",
+    "sounds": [
+      {
+        "name": "krayscandles:entity/wraith_hurt",
+        "stream": true
+      }
+    ]
+  },
+  "entity.wraith_ambient": {
+    "category": "entity",
+    "subtitle": "entity.wraith_ambient.sub",
+    "sounds": [
+      {
+        "name": "krayscandles:entity/wraith_ambient",
+        "stream": true
+      }
+    ]
+  }
+}
