@@ -2,9 +2,9 @@ package com.captainkray.krayscandles.main;
 
 import com.captainkray.krayscandles.entity.EntityWraith;
 import com.captainkray.krayscandles.init.*;
-import com.captainkray.krayscandles.render.RenderCandleMount;
-import com.captainkray.krayscandles.render.RenderStoneAlterTile;
-import com.captainkray.krayscandles.render.RenderWraith;
+import com.captainkray.krayscandles.client.render.RenderCandleMount;
+import com.captainkray.krayscandles.client.render.RenderStoneAlterTile;
+import com.captainkray.krayscandles.client.render.RenderWraith;
 import com.captainkray.krayscandles.tab.KCTabCandle;
 import com.captainkray.krayscandles.tab.KCTabMain;
 import com.captainkray.krayscandles.tab.KCTabTool;

@@ -1,4 +1,4 @@
-package com.captainkray.krayscandles.model;
+package com.captainkray.krayscandles.client.model;
 
 import com.captainkray.krayscandles.entity.EntityWraith;
 import com.google.common.collect.ImmutableList;

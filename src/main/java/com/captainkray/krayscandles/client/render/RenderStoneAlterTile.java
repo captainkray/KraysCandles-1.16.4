@@ -1,4 +1,4 @@
-package com.captainkray.krayscandles.render;
+package com.captainkray.krayscandles.client.render;
 
 import com.captainkray.krayscandles.tileentity.TileEntityStoneAlterTile;
 import com.mojang.blaze3d.matrix.MatrixStack;

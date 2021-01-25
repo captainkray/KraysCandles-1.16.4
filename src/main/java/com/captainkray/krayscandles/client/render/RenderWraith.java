@@ -1,8 +1,8 @@
-package com.captainkray.krayscandles.render;
+package com.captainkray.krayscandles.client.render;
 
 import com.captainkray.krayscandles.entity.EntityWraith;
 import com.captainkray.krayscandles.main.KCReference;
-import com.captainkray.krayscandles.model.ModelWraith;
+import com.captainkray.krayscandles.client.model.ModelWraith;
 import net.minecraft.client.renderer.entity.BipedRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.util.ResourceLocation;
