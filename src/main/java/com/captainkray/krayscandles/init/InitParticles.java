@@ -25,6 +25,7 @@ public class InitParticles {
     public static final RegistryObject<BasicParticleType> SOUL_FLAME_EXPLOSION = PARTICLES.register("soul_flame_explosion", () -> new BasicParticleType(true));
     public static final RegistryObject<BasicParticleType> SOUL_FLAME_MAGIC = PARTICLES.register("soul_flame_magic", () -> new BasicParticleType(true));
     public static final RegistryObject<BasicParticleType> SOUL_FLAME_MOB = PARTICLES.register("soul_flame_mob", () -> new BasicParticleType(true));
+    public static final RegistryObject<BasicParticleType> SOUL_FLAME_DAMNED = PARTICLES.register("soul_flame_damned", () -> new BasicParticleType(true));
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerParticles(ParticleFactoryRegisterEvent event) {
@@ -35,5 +36,6 @@ public class InitParticles {
         Minecraft.getInstance().particles.registerFactory(SOUL_FLAME_EXPLOSION.get(), FlameParticle.Factory::new);
         Minecraft.getInstance().particles.registerFactory(SOUL_FLAME_MAGIC.get(), FlameParticle.Factory::new);
         Minecraft.getInstance().particles.registerFactory(SOUL_FLAME_MOB.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particles.registerFactory(SOUL_FLAME_DAMNED.get(), FlameParticle.Factory::new);
     }
 }

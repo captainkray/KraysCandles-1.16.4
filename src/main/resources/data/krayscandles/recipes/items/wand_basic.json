@@ -2,23 +2,18 @@
   "type": "minecraft:crafting_shaped",
   "pattern":
   [
-    "c",
-    "f",
+    "r",
     "w"
   ],
   "key":
   {
-    "c":
+    "r":
     {
-      "item": "krayscandles:candle_fire"
+      "item": "krayscandles:rune_great_fire"
     },
     "w":
     {
       "item": "krayscandles:wand_hilt"
-    },
-    "f":
-    {
-      "item": "minecraft:fire_charge"
     }
   },
   "result":

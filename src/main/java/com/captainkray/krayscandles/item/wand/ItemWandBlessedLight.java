@@ -1,9 +1,9 @@
 package com.captainkray.krayscandles.item.wand;
 
+import com.captainkray.krayscandles.init.InitEffects;
 import com.captainkray.krayscandles.item.base.ItemWandBase;
 import com.captainkray.krayscandles.util.EffectHelper;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.potion.Effects;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
@@ -19,19 +19,14 @@ public class ItemWandBlessedLight extends ItemWandBase {
 
         if (!player.isCreative()) {
 
-            if (player.abilities.allowFlying) {
-                player.abilities.allowFlying = false;
-                player.abilities.isFlying = false;
-                player.sendPlayerAbilities();
-                player.playSound(SoundEvents.BLOCK_BEACON_DEACTIVATE, 1, 10);
-                EffectHelper.addPotionEffect(Effects.SLOW_FALLING, 20*5, 1, player);
+            if (player.getActivePotionEffect(InitEffects.FLIGHT.get()) == null) {
+                player.playSound(SoundEvents.BLOCK_CONDUIT_AMBIENT, 1, 10);
+                EffectHelper.addPotionEffect(InitEffects.FLIGHT.get(), 20*60*8, 0, player);
             }
 
             else {
-                player.abilities.allowFlying = true;
-                player.sendPlayerAbilities();
-                player.playSound(SoundEvents.BLOCK_CONDUIT_AMBIENT, 1, 10);
-                EffectHelper.addPotionEffect(Effects.SLOW_FALLING, 20*600, 1, player);
+                player.playSound(SoundEvents.BLOCK_BEACON_DEACTIVATE, 1, 10);
+                player.removePotionEffect(InitEffects.FLIGHT.get());
             }
 
             player.playSound(SoundEvents.AMBIENT_UNDERWATER_ENTER, 1,10);

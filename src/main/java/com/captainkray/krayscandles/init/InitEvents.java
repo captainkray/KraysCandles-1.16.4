@@ -14,5 +14,6 @@ public class InitEvents {
         MinecraftForge.EVENT_BUS.register(new RecipeEvents());
         MinecraftForge.EVENT_BUS.register(new BlockDropEvents());
         MinecraftForge.EVENT_BUS.register(new EntityDropEvents());
+        MinecraftForge.EVENT_BUS.register(new EffectEvents());
     }
 }

@@ -3,23 +3,23 @@
   "pattern":
   [
     "sss",
-    "sis",
+    "sws",
     "sss"
   ],
   "key":
   {
-    "i":
+    "w":
     {
-      "item": "krayscandles:iron_press"
+      "item": "krayscandles:wax_chunk_soy_small"
     },
     "s":
     {
-      "item": "krayscandles:soybean"
+      "item": "minecraft:sand"
     }
   },
   "result":
   {
-    "item": "krayscandles:iron_press_full",
-    "count": 1
+    "item": "krayscandles:waxed_sand",
+    "count": 8
   }
 }

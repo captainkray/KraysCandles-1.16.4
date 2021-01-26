@@ -2,16 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "pattern":
   [
-    "c",
     "f",
     "w"
   ],
   "key":
   {
-    "c":
-    {
-      "item": "krayscandles:candle_invis"
-    },
     "w":
     {
       "item": "krayscandles:wand_hilt"

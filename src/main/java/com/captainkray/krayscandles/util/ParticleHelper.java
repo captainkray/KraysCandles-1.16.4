@@ -46,6 +46,10 @@ public class ParticleHelper {
             else if (soulFlame.getEntityTypeFromSoul() == InitEntityTypes.WRAITH_MOB.get()) {
                 flameType = InitParticles.SOUL_FLAME_MOB.get();
             }
+
+            else if (soulFlame.getEntityTypeFromSoul() == InitEntityTypes.WRAITH_DAMNED.get()) {
+                flameType = InitParticles.SOUL_FLAME_DAMNED.get();
+            }
         }
 
         world.addParticle(flameType, x, y, z, 0.0D, 0.0D, 0.0D);

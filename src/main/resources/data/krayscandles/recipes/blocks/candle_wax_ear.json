@@ -2,24 +2,24 @@
   "type": "minecraft:crafting_shaped",
   "pattern":
   [
-    "sss",
-    "sis",
+    " w ",
+    " s ",
     "sss"
   ],
   "key":
   {
-    "i":
+    "w":
     {
-      "item": "krayscandles:iron_press"
+      "item": "krayscandles:candle_wick"
     },
     "s":
     {
-      "item": "krayscandles:soybean"
+      "item": "krayscandles:wax_ear"
     }
   },
   "result":
   {
-    "item": "krayscandles:iron_press_full",
+    "item": "krayscandles:candle_wax_ear",
     "count": 1
   }
 }

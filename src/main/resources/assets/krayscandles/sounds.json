@@ -28,5 +28,35 @@
         "stream": true
       }
     ]
+  },
+  "entity.wraith_damned_death": {
+    "category": "entity",
+    "subtitle": "entity.wraith_damned_death.sub",
+    "sounds": [
+      {
+        "name": "krayscandles:entity/wraith_damned_death",
+        "stream": true
+      }
+    ]
+  },
+  "entity.wraith_damned_hurt": {
+    "category": "entity",
+    "subtitle": "entity.wraith_damned_hurt.sub",
+    "sounds": [
+      {
+        "name": "krayscandles:entity/wraith_damned_hurt",
+        "stream": true
+      }
+    ]
+  },
+  "entity.wraith_damned_ambient": {
+    "category": "entity",
+    "subtitle": "entity.wraith_damned_ambient.sub",
+    "sounds": [
+      {
+        "name": "krayscandles:entity/wraith_damned_ambient",
+        "stream": true
+      }
+    ]
   }
 }

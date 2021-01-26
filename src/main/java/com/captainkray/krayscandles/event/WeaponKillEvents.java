@@ -78,6 +78,10 @@ public class WeaponKillEvents {
                         BlockLanternSoulTrappedItem.trapSoul(player, offItem, killedEntity.getType());
                     }
                 }
+
+                else if (event.getEntity().getEntityWorld().rand.nextInt(5) == 0) {
+                    killedEntity.entityDropItem(InitItems.SOUL_ESSENCE_LESSER.get());
+                }
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.captainkray.krayscandles.ritual;
 
+import com.captainkray.krayscandles.init.InitEntityTypes;
 import com.captainkray.krayscandles.init.InitItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
@@ -38,7 +39,7 @@ public class RitualTypes {
         RITUAL_RUNE.addIngredient(new RitualAlterIngredient(new ItemStack(InitItems.SOUL_ESSENCE_GREATER.get()), 0, 0, -2));
 
         RITUAL_BLESSED.addRitual(RITUAL_RUNE);
-        RITUAL_BLESSED.addIngredient(new RitualAlterIngredient(new ItemStack(Items.ELYTRA), -2, 0, 0));
+        RITUAL_BLESSED.addIngredient(new RitualAlterIngredient(new ItemStack(InitItems.WINGS_DIVINE.get()), -2, 0, 0));
         RITUAL_CURSED.addRitual(RITUAL_RUNE);
         RITUAL_CURSED.addIngredient(new RitualAlterIngredient(new ItemStack(InitItems.FLYING_BAT_EYEBALL.get()), -2, 0, 0));
         RITUAL_PURGED.addRitual(RITUAL_RUNE);
@@ -58,12 +59,21 @@ public class RitualTypes {
         RITUAL_MINING.addRitual(RITUAL_RUNE);
         RITUAL_MINING.addIngredient(new RitualAlterIngredient(new ItemStack(Blocks.TNT), -2, 0, 0));
 
-        RITUAL_CANDLE.addIngredient(new RitualIngredient(InitItems.CANDLE_SOY.get(), 0, 0, 0));
+        RITUAL_CANDLE.addIngredient(new RitualCandleIngredient(0, 0, 0));
         RITUAL_CANDLE.addSymmetricalIngredient(new RitualAlterIngredient(new ItemStack(InitItems.WAX_CHUNK_CURSED_SMALL.get()), 3, 0, 0));
-        RITUAL_CANDLE.addSymmetricalIngredient(new RitualAlterIngredient(new ItemStack(InitItems.WAX_CHUNK_CURSED_SMALL.get()), 2, 0, 2));
+        RITUAL_CANDLE.addSymmetricalIngredient(new RitualAlterIngredient(new ItemStack(InitItems.WAX_CHUNK_PURGED_SMALL.get()), 2, 0, 2));
         RITUAL_CANDLE.addSymmetricalIngredient(new RitualCandleIngredient(3, 0, 1));
         RITUAL_CANDLE.addSymmetricalIngredient(new RitualCandleIngredient(1, 0, 3));
 
-        //RITUAL_WRAITH.addIngredient(new RitualSoulCandleIngredient(InitEntityTypes.WRAITH_FIRE.get(), 3, 3, 0));
+        RITUAL_WRAITH_NS.addIngredient(new RitualIngredient(InitItems.CANDLE_CURSED.get(), 0, 0, 0));
+        RITUAL_WRAITH_NS.addIngredient(new RitualSoulCandleIngredient(InitEntityTypes.WRAITH_AIR.get(), 0, 0, -2));
+        RITUAL_WRAITH_NS.addIngredient(new RitualSoulCandleIngredient(InitEntityTypes.WRAITH_EXPLOSION.get(), 0, 0, 2));
+        RITUAL_WRAITH_NS.addIngredient(new RitualSoulCandleIngredient(InitEntityTypes.WRAITH_MOB.get(), 2, 0, -1));
+        RITUAL_WRAITH_NS.addIngredient(new RitualSoulCandleIngredient(InitEntityTypes.WRAITH_WATER.get(), -2, 0, -1));
+        RITUAL_WRAITH_NS.addIngredient(new RitualSoulCandleIngredient(InitEntityTypes.WRAITH_FIRE.get(), 2, 0, 1));
+        RITUAL_WRAITH_NS.addIngredient(new RitualSoulCandleIngredient(InitEntityTypes.WRAITH_MAGIC.get(), -2, 0, 1));
+
+        RITUAL_WRAITH_EW.addRitual(RITUAL_WRAITH_NS);
+        RITUAL_WRAITH_EW.rotateRitual();
     }
 }

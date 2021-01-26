@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "krayscandles:items/wax_chunk_soy_small_colored"
-  }
-}

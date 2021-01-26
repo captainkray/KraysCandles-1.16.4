@@ -1,5 +1,6 @@
 package com.captainkray.krayscandles.event;
 
+import com.captainkray.krayscandles.entity.EntityWraithDamned;
 import com.captainkray.krayscandles.init.InitItems;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
@@ -16,16 +17,20 @@ public class EntityDropEvents {
     @SubscribeEvent
     public void onColorBreakEvent(LivingDropsEvent event) {
 
+        World world = event.getEntity().getEntityWorld();
         LivingEntity entity = event.getEntityLiving();
 
         if (entity instanceof WitchEntity) {
 
             Random random = new Random();
-            World world = entity.getEntityWorld();
 
             if (random.nextInt(2) == 0) {
                 event.getDrops().add(new ItemEntity(world, entity.getPosX(), entity.getPosY(), entity.getPosZ(), new ItemStack(InitItems.SOYBEAN_CROP.get().asItem())));
             }
+        }
+
+        if (entity instanceof EntityWraithDamned) {
+            event.getDrops().add(new ItemEntity(world, entity.getPosX(), entity.getPosY(), entity.getPosZ(), new ItemStack(InitItems.WINGS_WRAITH.get().asItem())));
         }
     }
 }

@@ -45,9 +45,9 @@ public abstract class EntityWraith extends MonsterEntity {
 
     public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
         return MobEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 60D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.4D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 5);
+                .createMutableAttribute(Attributes.MAX_HEALTH, 40D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D)
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 4);
     }
 
     @Override

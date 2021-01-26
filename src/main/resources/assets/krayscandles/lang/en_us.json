@@ -3,40 +3,6 @@
   "item.krayscandles.wax_chunk_soy": "Chunk of Soy Wax",
   "item.krayscandles.wax_chunk_soy_small": "Small Chunks of Soy Wax",
 
-  "item.krayscandles.wax_chunk_soy_colored_white": "Chunk of White Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_orange": "Chunk of Orange Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_magenta": "Chunk of Magenta Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_light_blue": "Chunk of Light Blue Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_yellow": "Chunk of Yellow Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_lime": "Chunk of Lime Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_pink": "Chunk of Pink Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_gray": "Chunk of Gray Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_light_gray": "Chunk of Light Gray Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_cyan": "Chunk of Cyan Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_purple": "Chunk of Purple Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_blue": "Chunk of Blue Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_brown": "Chunk of Brown Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_green": "Chunk of Green Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_red": "Chunk of Red Soy Wax",
-  "item.krayscandles.wax_chunk_soy_colored_black": "Chunk of Black Soy Wax",
-
-  "item.krayscandles.wax_chunk_soy_small_colored_white": "Small Chunks of White Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_orange": "Small Chunks of Orange Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_magenta": "Small Chunks of Magenta Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_light_blue": "Small Chunks of Light Blue Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_yellow": "Small Chunks of Yellow Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_lime": "Small Chunks of Lime Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_pink": "Small Chunks of Pink Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_gray": "Small Chunks of Gray Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_light_gray": "Small Chunks of Light Gray Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_cyan": "Small Chunks of Cyan Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_purple": "Small Chunks of Purple Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_blue": "Small Chunks of Blue Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_brown": "Small Chunks of Brown Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_green": "Small Chunks of Green Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_red": "Small Chunks of Red Soy Wax",
-  "item.krayscandles.wax_chunk_soy_small_colored_black": "Small Chunks of Black Soy Wax",
-
   "item.krayscandles.wax_chunk_blessed": "Chunk of Blessed Wax",
   "item.krayscandles.wax_chunk_blessed_small": "Small Chunks of Blessed Wax",
   "item.krayscandles.wax_chunk_cursed": "Chunk of Cursed Wax",
@@ -77,6 +43,8 @@
   "item.krayscandles.zombie_ear": "Zombie Ear",
   "item.krayscandles.flying_bat_eyeball": "Flying Bat Eyeball",
   "item.krayscandles.q_tip": "Cotton Swab",
+  "item.krayscandles.wings_wraith": "Wings of the Damned",
+  "item.krayscandles.wings_divine": "Divine Wings",
 
   "item.krayscandles.soybean": "Soybean",
 
@@ -164,6 +132,7 @@
   "entity.krayscandles.wraith_explosion": "Wraith of Explosions",
   "entity.krayscandles.wraith_magic": "Wraith of Magic",
   "entity.krayscandles.wraith_mob": "Wraith of Monsters",
+  "entity.krayscandles.wraith_damned": "Wraith of the Damned",
 
 
 

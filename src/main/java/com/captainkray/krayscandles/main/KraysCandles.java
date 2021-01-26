@@ -1,6 +1,8 @@
 package com.captainkray.krayscandles.main;
 
+import com.captainkray.krayscandles.client.render.RenderWraithDamned;
 import com.captainkray.krayscandles.entity.EntityWraith;
+import com.captainkray.krayscandles.entity.EntityWraithDamned;
 import com.captainkray.krayscandles.init.*;
 import com.captainkray.krayscandles.client.render.RenderCandleMount;
 import com.captainkray.krayscandles.client.render.RenderStoneAlterTile;
@@ -42,6 +44,7 @@ public class KraysCandles {
 
         InitItems.init();
         InitSounds.SOUNDS.register(MOD_EVENT_BUS);
+        InitEffects.POTION_TYPES.register(MOD_EVENT_BUS);
         InitTileEntityTypes.TILE_ENTITY_TYPES.register(MOD_EVENT_BUS);
         InitRecipes.RECIPES.register(MOD_EVENT_BUS);
         InitEntityTypes.ENTITY_TYPES.register(MOD_EVENT_BUS);
@@ -58,6 +61,7 @@ public class KraysCandles {
             GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_EXPLOSION.get(), EntityWraith.setCustomAttributes().create());
             GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_MAGIC.get(), EntityWraith.setCustomAttributes().create());
             GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_MOB.get(), EntityWraith.setCustomAttributes().create());
+            GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_DAMNED.get(), EntityWraithDamned.setCustomAttributes().create());
         });
     }
 
@@ -76,5 +80,6 @@ public class KraysCandles {
         RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH_EXPLOSION.get(), RenderWraith::new);
         RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH_MAGIC.get(), RenderWraith::new);
         RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH_MOB.get(), RenderWraith::new);
+        RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH_DAMNED.get(), RenderWraithDamned::new);
     }
 }

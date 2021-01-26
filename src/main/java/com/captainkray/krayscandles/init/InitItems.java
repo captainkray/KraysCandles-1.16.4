@@ -40,8 +40,6 @@ public class InitItems {
     public static final RegistryObject<Item> WAX_CHUNK_SOY_RAW =             regItem("wax_chunk_soy_raw", ItemBase::new);
     public static final RegistryObject<Item> WAX_CHUNK_SOY =                 regItem("wax_chunk_soy", ItemBase::new);
     public static final RegistryObject<Item> WAX_CHUNK_SOY_SMALL =           regItem("wax_chunk_soy_small", ItemBase::new);
-    public static final RegistryObject<Item> WAX_CHUNK_SOY_COLORED =         regItem("wax_chunk_soy_colored", ItemDyeColored::new);
-    public static final RegistryObject<Item> WAX_CHUNK_SOY_SMALL_COLORED =   regItem("wax_chunk_soy_small_colored", ItemDyeColored::new);
     public static final RegistryObject<Item> WAX_CHUNK_BLESSED =             regItem("wax_chunk_blessed", ItemBase::new);
     public static final RegistryObject<Item> WAX_CHUNK_BLESSED_SMALL =       regItem("wax_chunk_blessed_small", ItemBase::new);
     public static final RegistryObject<Item> WAX_CHUNK_CURSED =              regItem("wax_chunk_cursed", ItemBase::new);
@@ -82,6 +80,8 @@ public class InitItems {
     public static final RegistryObject<Item> ZOMBIE_EAR =                    regItem("zombie_ear", ItemBase::new);
     public static final RegistryObject<Item> FLYING_BAT_EYEBALL =            regItem("flying_bat_eyeball", ItemBase::new);
     public static final RegistryObject<Item> Q_TIP =                         regItem("q_tip", ItemBase::new);
+    public static final RegistryObject<Item> WINGS_WRAITH =                  regItem("wings_wraith", ItemBase::new);
+    public static final RegistryObject<Item> WINGS_DIVINE =                  regItem("wings_divine", ItemBase::new);
 
     //CROPS
     public static final RegistryObject<Item> SOYBEAN =                       regItem("soybean", () -> new ItemFoodBase(3, 1.2F));

@@ -17,7 +17,7 @@ import java.util.Optional;
 
 public abstract class TileEntityCandleBase extends TileEntityBase implements ISoulFlame {
 
-    private static final int EFFECT_RANGE = 5;
+    private static final int EFFECT_RANGE = 8;
 
     private String entitySoulType = "";
     private String entitySoulName = "";

@@ -1,5 +1,6 @@
 package com.captainkray.krayscandles.event;
 
+import com.captainkray.krayscandles.entity.EntityWraithDamned;
 import com.captainkray.krayscandles.init.InitItems;
 import com.captainkray.krayscandles.ritual.Ritual;
 import com.captainkray.krayscandles.ritual.RitualTypes;
@@ -50,6 +51,14 @@ public class RitualEvents {
             else if (handleCandleRitual(event, InitItems.RUNE_GREAT_LUCK.get(), InitItems.CANDLE_LUCK.get()));
             else if (handleCandleRitual(event, InitItems.RUNE_GREAT_ENERGY.get(), InitItems.CANDLE_ENERGY.get()));
             else if (handleCandleRitual(event, InitItems.RUNE_GREAT_MINING.get(), InitItems.CANDLE_CAVERN.get()));
+
+            if (RitualTypes.RITUAL_WRAITH_NS.isRitualComplete(event.getWorld(), event.getPos())) {
+                event.getWorld().addEntity(new EntityWraithDamned(event.getWorld(), event.getPos()));
+            }
+
+            else if (RitualTypes.RITUAL_WRAITH_EW.isRitualComplete(event.getWorld(), event.getPos())) {
+                event.getWorld().addEntity(new EntityWraithDamned(event.getWorld(), event.getPos()));
+            }
         }
     }
 
