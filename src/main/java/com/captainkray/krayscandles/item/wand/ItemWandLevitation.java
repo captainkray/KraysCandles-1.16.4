@@ -1,6 +1,8 @@
 package com.captainkray.krayscandles.item.wand;
 
 import com.captainkray.krayscandles.item.base.ItemWandBase;
+import com.captainkray.krayscandles.ritual.RitualRecipe;
+import com.captainkray.krayscandles.ritual.RitualRecipes;
 import com.captainkray.krayscandles.util.RayTraceHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -34,6 +36,11 @@ public class ItemWandLevitation extends ItemWandBase {
         }
 
         return false;
+    }
+
+    @Override
+    public RitualRecipe getRitualRecipe() {
+        return RitualRecipes.WAND_LEVITATE;
     }
 }
 

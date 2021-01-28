@@ -1,6 +1,8 @@
 package com.captainkray.krayscandles.item.wand;
 
 import com.captainkray.krayscandles.item.base.ItemWandBase;
+import com.captainkray.krayscandles.ritual.RitualRecipe;
+import com.captainkray.krayscandles.ritual.RitualRecipes;
 import com.captainkray.krayscandles.util.EffectHelper;
 import com.captainkray.krayscandles.util.Location;
 import com.captainkray.krayscandles.util.RayTraceHelper;
@@ -41,6 +43,11 @@ public class ItemWandMine extends ItemWandBase {
         }
 
         return false;
+    }
+
+    @Override
+    public RitualRecipe getRitualRecipe() {
+        return RitualRecipes.WAND_MINING;
     }
 }
 

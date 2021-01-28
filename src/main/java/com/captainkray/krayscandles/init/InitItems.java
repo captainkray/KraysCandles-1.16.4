@@ -13,6 +13,7 @@ import com.captainkray.krayscandles.item.base.ItemBase;
 import com.captainkray.krayscandles.item.base.ItemFoodBase;
 import com.captainkray.krayscandles.item.tier.KCArmorTiers;
 import com.captainkray.krayscandles.item.tier.KCSwordTiers;
+import com.captainkray.krayscandles.ritual.RitualRecipes;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
@@ -51,11 +52,11 @@ public class InitItems {
 
     public static final RegistryObject<Item> CANDLE_WICK =                   regItem("candle_wick", ItemBase::new);
 
-    public static final RegistryObject<Item> SOUL_ESSENCE_LESSER =           regItem("soul_essence_lesser", ItemBase::new);
+    public static final RegistryObject<Item> SOUL_ESSENCE_LESSER =           regItem("soul_essence_lesser", ItemSoulEssence::new);
     public static final RegistryObject<Item> SOUL_ESSENCE_GREATER_DEPLETED = regItem("soul_essence_greater_depleted", ItemBase::new);
-    public static final RegistryObject<Item> SOUL_ESSENCE_GREATER =          regItem("soul_essence_greater", ItemBase::new);
+    public static final RegistryObject<Item> SOUL_ESSENCE_GREATER =          regItem("soul_essence_greater", () -> new ItemRitual(RitualRecipes.ESSENCE_GREATER));
     public static final RegistryObject<Item> SOUL_ESSENCE_BLESSED_DEPLETED = regItem("soul_essence_blessed_depleted", ItemBase::new);
-    public static final RegistryObject<Item> SOUL_ESSENCE_BLESSED =          regItem("soul_essence_blessed", ItemBase::new);
+    public static final RegistryObject<Item> SOUL_ESSENCE_BLESSED =          regItem("soul_essence_blessed", () -> new ItemRitual(RitualRecipes.ESSENCE_GREATER));
 
     public static final RegistryObject<Item> IRON_PRESS =                    regItem("iron_press", () -> new ItemBase().setTag("iron_press"));
     public static final RegistryObject<Item> IRON_PRESS_FULL =               regItem("iron_press_full", () -> new ItemBase().setTag("iron_press"));
@@ -88,16 +89,16 @@ public class InitItems {
 
     //RUNES
     public static final RegistryObject<Item> RUNE_CATALYST =                 regItem("rune_catalyst", ItemBase::new);
-    public static final RegistryObject<Item> RUNE_BLESSED_FLIGHT =           regItem("rune_blessed_flight", ItemBase::new);
-    public static final RegistryObject<Item> RUNE_CURSED_NIGHT =             regItem("rune_cursed_night", ItemBase::new);
-    public static final RegistryObject<Item> RUNE_PURGED_LIGHT =             regItem("rune_purged_light", ItemBase::new);
-    public static final RegistryObject<Item> RUNE_GREAT_FIRE =               regItem("rune_great_fire", ItemBase::new);
-    public static final RegistryObject<Item> RUNE_GREAT_LEVITATION =         regItem("rune_great_levitation", ItemBase::new);
-    public static final RegistryObject<Item> RUNE_ZEN_HEALING =              regItem("rune_zen_healing", ItemBase::new);
-    public static final RegistryObject<Item> RUNE_GREAT_MAGIC =              regItem("rune_great_magic", ItemBase::new);
-    public static final RegistryObject<Item> RUNE_GREAT_LUCK =               regItem("rune_great_luck", ItemBase::new);
-    public static final RegistryObject<Item> RUNE_GREAT_ENERGY =             regItem("rune_great_energy", ItemBase::new);
-    public static final RegistryObject<Item> RUNE_GREAT_MINING =             regItem("rune_great_mining", ItemBase::new);
+    public static final RegistryObject<Item> RUNE_BLESSED_FLIGHT =           regItem("rune_blessed_flight", () -> new ItemRitual(RitualRecipes.RUNE_BLESSED));
+    public static final RegistryObject<Item> RUNE_CURSED_NIGHT =             regItem("rune_cursed_night", () -> new ItemRitual(RitualRecipes.RUNE_CURSED));
+    public static final RegistryObject<Item> RUNE_PURGED_LIGHT =             regItem("rune_purged_light", () -> new ItemRitual(RitualRecipes.RUNE_PURGED));
+    public static final RegistryObject<Item> RUNE_GREAT_FIRE =               regItem("rune_great_fire", () -> new ItemRitual(RitualRecipes.RUNE_FIRE));
+    public static final RegistryObject<Item> RUNE_GREAT_LEVITATION =         regItem("rune_great_levitation", () -> new ItemRitual(RitualRecipes.RUNE_LEVITATE));
+    public static final RegistryObject<Item> RUNE_ZEN_HEALING =              regItem("rune_zen_healing", () -> new ItemRitual(RitualRecipes.RUNE_ZEN));
+    public static final RegistryObject<Item> RUNE_GREAT_MAGIC =              regItem("rune_great_magic", () -> new ItemRitual(RitualRecipes.RUNE_INVIS));
+    public static final RegistryObject<Item> RUNE_GREAT_LUCK =               regItem("rune_great_luck", () -> new ItemRitual(RitualRecipes.RUNE_LUCK));
+    public static final RegistryObject<Item> RUNE_GREAT_ENERGY =             regItem("rune_great_energy", () -> new ItemRitual(RitualRecipes.RUNE_ENERGY));
+    public static final RegistryObject<Item> RUNE_GREAT_MINING =             regItem("rune_great_mining", () -> new ItemRitual(RitualRecipes.RUNE_MINING));
 
 
     //WANDS
@@ -117,7 +118,11 @@ public class InitItems {
     public static final RegistryObject<Item> HELMET_BLESSED_NIGHT =     regItem("helmet_blessed_night", () -> new ItemArmorBase(KCArmorTiers.BLESSED_NIGHT, EquipmentSlotType.HEAD));
 
     //RITUAL NOTES
+    public static final RegistryObject<Item> RITUAL_NOTE_ESSENCE =       regItem("ritual_note_essence", ItemBase::new);
+    public static final RegistryObject<Item> RITUAL_NOTE_RUNE =       regItem("ritual_note_rune", ItemBase::new);
     public static final RegistryObject<Item> RITUAL_NOTE_CANDLE =       regItem("ritual_note_candle", ItemBase::new);
+    public static final RegistryObject<Item> RITUAL_NOTE_WAND =       regItem("ritual_note_wand", ItemBase::new);
+    public static final RegistryObject<Item> RITUAL_NOTE_WRAITH =       regItem("ritual_note_wraith", ItemBase::new);
 
     //------BLOCKS------\\
 

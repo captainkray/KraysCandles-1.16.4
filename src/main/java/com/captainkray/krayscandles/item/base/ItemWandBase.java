@@ -1,6 +1,7 @@
 package com.captainkray.krayscandles.item.base;
 
 import com.captainkray.krayscandles.main.KraysCandles;
+import com.captainkray.krayscandles.util.IRitualItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -8,7 +9,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 
-public abstract class ItemWandBase extends ItemBase {
+public abstract class ItemWandBase extends ItemBase implements IRitualItem {
 
     public ItemWandBase() {
         super(new Item.Properties().group(KraysCandles.TAB_TOOL).maxStackSize(1));

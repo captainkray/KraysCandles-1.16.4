@@ -2,6 +2,8 @@ package com.captainkray.krayscandles.block.candle;
 
 import com.captainkray.krayscandles.block.base.BlockCandleBase;
 import com.captainkray.krayscandles.init.InitTileEntityTypes;
+import com.captainkray.krayscandles.ritual.RitualRecipe;
+import com.captainkray.krayscandles.ritual.RitualRecipes;
 import com.captainkray.krayscandles.util.Location;
 import com.captainkray.krayscandles.util.ParticleHelper;
 import com.captainkray.krayscandles.util.ShapeBundle;
@@ -21,6 +23,11 @@ public class BlockCandleFire extends BlockCandleBase {
     static {
         SHAPE.addShape(Block.makeCuboidShape(7, 0, 7, 9, 22, 9));
         SHAPE.addShape(Block.makeCuboidShape(7.825D, 22, 7.825D, 8.225D, 23.75D, 8.225D));
+    }
+
+    @Override
+    public RitualRecipe getRitualRecipe() {
+        return RitualRecipes.CANDLE_FIRE;
     }
 
     @Override

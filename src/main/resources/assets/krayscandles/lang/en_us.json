@@ -72,7 +72,12 @@
   "item.krayscandles.scalpel": "Scalpel",
   "item.krayscandles.wax_sword": "Wax Katana",
   "item.krayscandles.blade_night": "Blade of the Cursed Night",
+
+  "item.krayscandles.ritual_note_essence": "Essence Ritual Note",
+  "item.krayscandles.ritual_note_rune": "Rune Ritual Note",
   "item.krayscandles.ritual_note_candle": "Candle Ritual Note",
+  "item.krayscandles.ritual_note_wand": "Wand Ritual Note",
+  "item.krayscandles.ritual_note_wraith": "Wraith Ritual Note",
 
 
 

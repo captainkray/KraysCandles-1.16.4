@@ -2,6 +2,8 @@ package com.captainkray.krayscandles.block.candle;
 
 import com.captainkray.krayscandles.block.base.BlockCandleBase;
 import com.captainkray.krayscandles.init.InitTileEntityTypes;
+import com.captainkray.krayscandles.ritual.RitualRecipe;
+import com.captainkray.krayscandles.ritual.RitualRecipes;
 import com.captainkray.krayscandles.util.Location;
 import com.captainkray.krayscandles.util.ParticleHelper;
 import com.captainkray.krayscandles.util.ShapeBundle;
@@ -21,6 +23,11 @@ public class BlockCandleWaxBee extends BlockCandleBase {
     static {
         SHAPE.addShape(Block.makeCuboidShape(6, 0, 6, 10, 6, 10));//Candle
         SHAPE.addShape(Block.makeCuboidShape(7.625, 5.2, 7.625, 8.375, 8.2, 8.375)); //Wick
+    }
+
+    @Override
+    public RitualRecipe getRitualRecipe() {
+        return null;
     }
 
     @Override

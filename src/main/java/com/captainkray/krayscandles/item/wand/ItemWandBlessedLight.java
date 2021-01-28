@@ -2,6 +2,8 @@ package com.captainkray.krayscandles.item.wand;
 
 import com.captainkray.krayscandles.init.InitEffects;
 import com.captainkray.krayscandles.item.base.ItemWandBase;
+import com.captainkray.krayscandles.ritual.RitualRecipe;
+import com.captainkray.krayscandles.ritual.RitualRecipes;
 import com.captainkray.krayscandles.util.EffectHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.SoundEvents;
@@ -36,6 +38,11 @@ public class ItemWandBlessedLight extends ItemWandBase {
         }
 
         return false;
+    }
+
+    @Override
+    public RitualRecipe getRitualRecipe() {
+        return RitualRecipes.WAND_BLESSED;
     }
 }
 

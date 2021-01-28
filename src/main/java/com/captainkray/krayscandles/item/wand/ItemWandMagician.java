@@ -1,6 +1,8 @@
 package com.captainkray.krayscandles.item.wand;
 
 import com.captainkray.krayscandles.item.base.ItemWandBase;
+import com.captainkray.krayscandles.ritual.RitualRecipe;
+import com.captainkray.krayscandles.ritual.RitualRecipes;
 import com.captainkray.krayscandles.util.EffectHelper;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.RabbitEntity;
@@ -28,6 +30,11 @@ public class ItemWandMagician extends ItemWandBase {
         EffectHelper.addPotionEffect(Effects.INVISIBILITY, 120*20, 1, player);
         EffectHelper.addPotionEffect(Effects.LUCK, 120*20, 1, player);
         return true;
+    }
+
+    @Override
+    public RitualRecipe getRitualRecipe() {
+        return RitualRecipes.WAND_LEVITATE;
     }
 }
 

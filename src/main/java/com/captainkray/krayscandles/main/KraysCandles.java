@@ -7,12 +7,16 @@ import com.captainkray.krayscandles.init.*;
 import com.captainkray.krayscandles.client.render.RenderCandleMount;
 import com.captainkray.krayscandles.client.render.RenderStoneAlterTile;
 import com.captainkray.krayscandles.client.render.RenderWraith;
+import com.captainkray.krayscandles.ritual.RitualRecipes;
+import com.captainkray.krayscandles.ritual.RitualStructureTypes;
 import com.captainkray.krayscandles.tab.KCTabCandle;
 import com.captainkray.krayscandles.tab.KCTabMain;
 import com.captainkray.krayscandles.tab.KCTabTool;
+import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemModelsProperties;
+import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -52,9 +56,15 @@ public class KraysCandles {
     }
 
     private void onCommonSetup(final FMLCommonSetupEvent event) {
-        InitEvents.init();
+        InitEvents.initCommon();
 
         DeferredWorkQueue.runLater(() -> {
+
+            DispenserBlock.registerDispenseBehavior(Items.FLINT_AND_STEEL, new DispenserLightBehavior());
+
+            RitualStructureTypes.init();
+            RitualRecipes.init();
+
             GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_FIRE.get(), EntityWraith.setCustomAttributes().create());
             GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_WATER.get(), EntityWraith.setCustomAttributes().create());
             GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_AIR.get(), EntityWraith.setCustomAttributes().create());
@@ -66,6 +76,8 @@ public class KraysCandles {
     }
 
     private void onClientSetup(final FMLClientSetupEvent event) {
+
+        InitEvents.initClient();
 
         InitRenderLayers.init();
 

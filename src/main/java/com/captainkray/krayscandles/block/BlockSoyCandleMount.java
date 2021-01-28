@@ -3,6 +3,7 @@ package com.captainkray.krayscandles.block;
 import com.captainkray.krayscandles.block.base.BlockCandleBase;
 import com.captainkray.krayscandles.init.InitItems;
 import com.captainkray.krayscandles.init.InitTileEntityTypes;
+import com.captainkray.krayscandles.ritual.RitualRecipe;
 import com.captainkray.krayscandles.tileentity.TileEntityCandleMount;
 import com.captainkray.krayscandles.util.ItemHelper;
 import com.captainkray.krayscandles.util.Location;
@@ -44,6 +45,11 @@ public class BlockSoyCandleMount extends BlockCandleBase {
     public BlockSoyCandleMount() {
         super(Block.Properties.create(Material.IRON).hardnessAndResistance(1F).harvestTool(ToolType.PICKAXE).sound(SoundType.LANTERN).setLightLevel(value -> 14).notSolid());
         setDefaultState(this.stateContainer.getBaseState().with(LIT, false).with(FACING, Direction.NORTH));
+    }
+
+    @Override
+    public RitualRecipe getRitualRecipe() {
+        return null;
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.captainkray.krayscandles.block.BlockLanternSoulTrappedItem;
 import com.captainkray.krayscandles.init.InitItems;
 import com.captainkray.krayscandles.tileentity.base.ISoulFlame;
 import com.captainkray.krayscandles.tileentity.base.TileEntityCandleBase;
+import com.captainkray.krayscandles.util.IRitualItem;
 import com.captainkray.krayscandles.util.Location;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -31,7 +32,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
-public abstract class BlockCandleBase extends BlockBase implements ITileEntityProvider {
+public abstract class BlockCandleBase extends BlockBase implements ITileEntityProvider, IRitualItem {
 
     public static BooleanProperty LIT = BlockStateProperties.LIT;
 

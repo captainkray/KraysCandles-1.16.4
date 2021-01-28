@@ -5,8 +5,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class InitEvents {
 
-    public static void init() {
-
+    public static void initCommon() {
         MinecraftForge.EVENT_BUS.register(new RitualEvents());
         MinecraftForge.EVENT_BUS.register(new ArmorEvents());
         MinecraftForge.EVENT_BUS.register(new WeaponKillEvents());
@@ -15,5 +14,9 @@ public class InitEvents {
         MinecraftForge.EVENT_BUS.register(new BlockDropEvents());
         MinecraftForge.EVENT_BUS.register(new EntityDropEvents());
         MinecraftForge.EVENT_BUS.register(new EffectEvents());
+    }
+
+    public static void initClient() {
+        MinecraftForge.EVENT_BUS.register(new LoreEvents());
     }
 }
