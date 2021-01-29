@@ -17,10 +17,9 @@ public class DispenserLightBehavior implements IDispenseItemBehavior {
 
         Location location = new Location(source.getWorld(), source.getBlockPos().offset(direction));
 
-        System.out.println(location.getBlock());
 
         if (location.getBlock() instanceof BlockCandleBase) {
-            BlockCandleBase.setLit(location, true);
+            BlockCandleBase.setLit(location,!location.getBlockState().get(BlockCandleBase.LIT) );
         }
 
         return stack;

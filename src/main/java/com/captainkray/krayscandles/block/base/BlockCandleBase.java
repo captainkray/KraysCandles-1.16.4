@@ -116,6 +116,8 @@ public abstract class BlockCandleBase extends BlockBase implements ITileEntityPr
 
         if (state.get(LIT)) {
             setLit(location, false);
+            // Caleb Helped do a quick fix.
+            attachSoul(new Location(world , pos) , "" ,"");
             player.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 1, 2);
         }
     }
