@@ -25,10 +25,10 @@ public class BlockCropBase extends CropsBlock {
             Block.makeCuboidShape(0, 0, 0, 16, 4, 16),
             Block.makeCuboidShape(0, 0, 0, 16, 6, 16),
             Block.makeCuboidShape(0, 0, 0, 16, 8, 16),
-            Block.makeCuboidShape(0, 0, 0, 16, 1, 16),
-            Block.makeCuboidShape(0, 0, 0, 16, 1, 16),
-            Block.makeCuboidShape(0, 0, 0, 16, 1, 16),
-            Block.makeCuboidShape(0, 0, 0, 16, 1, 16)};
+            Block.makeCuboidShape(0, 0, 0, 16, 10, 16),
+            Block.makeCuboidShape(0, 0, 0, 16, 12, 16),
+            Block.makeCuboidShape(0, 0, 0, 16, 14, 16),
+            Block.makeCuboidShape(0, 0, 0, 16, 16, 16)};
 
     private final Supplier<Item> cropItem;
 

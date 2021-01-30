@@ -3,7 +3,7 @@ package com.captainkray.krayscandles.init;
 import com.captainkray.krayscandles.main.KCReference;
 import com.captainkray.krayscandles.tileentity.TileEntityCandleMount;
 import com.captainkray.krayscandles.tileentity.TileEntityLanternSoulTrapped;
-import com.captainkray.krayscandles.tileentity.TileEntityStoneAlterTile;
+import com.captainkray.krayscandles.tileentity.TileEntityStoneAltarTile;
 import com.captainkray.krayscandles.tileentity.candle.*;
 import com.google.common.collect.Sets;
 import net.minecraft.tileentity.TileEntityType;
@@ -51,7 +51,7 @@ public class InitTileEntityTypes {
     public static final RegistryObject<TileEntityType<TileEntityLanternSoulTrapped>> LANTERN_SOUL_TRAPPED = TILE_ENTITY_TYPES.register(
             "lantern_soul_trapped", () -> new TileEntityType<>(TileEntityLanternSoulTrapped::new, Sets.newHashSet(InitItems.LANTERN_SOUL_TRAPPED.get()), null));
 
-    public static final RegistryObject<TileEntityType<TileEntityStoneAlterTile>> STONE_ALTER_TILE = TILE_ENTITY_TYPES.register(
-            "stone_alter_tile", () -> new TileEntityType<>(TileEntityStoneAlterTile::new, Sets.newHashSet(InitItems.STONE_ALTAR_TILE.get()), null));
+    public static final RegistryObject<TileEntityType<TileEntityStoneAltarTile>> STONE_ALTAR_TILE = TILE_ENTITY_TYPES.register(
+            "stone_alter_tile", () -> new TileEntityType<>(TileEntityStoneAltarTile::new, Sets.newHashSet(InitItems.STONE_ALTAR_TILE.get()), null));
 }
 

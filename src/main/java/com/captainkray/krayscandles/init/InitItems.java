@@ -78,8 +78,8 @@ public class InitItems {
     public static final RegistryObject<Item> STONE_STATUE_UNCARVED =         regItem("stone_statue_uncarved", ItemBase::new);
     public static final RegistryObject<Item> STONE_STATUE_CARVED =           regItem("stone_statue_carved", ItemBase::new);
 
-    public static final RegistryObject<Item> ZOMBIE_EAR =                    regItem("zombie_ear", ItemBase::new);
-    public static final RegistryObject<Item> FLYING_BAT_EYEBALL =            regItem("flying_bat_eyeball", ItemBase::new);
+    public static final RegistryObject<Item> ZOMBIE_EAR =                    regItem("zombie_ear", ItemZombieEar::new);
+    public static final RegistryObject<Item> FLYING_BAT_EYEBALL =            regItem("flying_bat_eyeball", ItemBatEyeball::new);
     public static final RegistryObject<Item> Q_TIP =                         regItem("q_tip", ItemBase::new);
     public static final RegistryObject<Item> WINGS_WRAITH =                  regItem("wings_wraith", ItemBase::new);
     public static final RegistryObject<Item> WINGS_DIVINE =                  regItem("wings_divine", ItemBase::new);
@@ -112,7 +112,7 @@ public class InitItems {
     //WEAPONS
     public static final RegistryObject<Item> SCALPEL =                  regItem("scalpel", () -> new ItemMagicSword(KCSwordTiers.SCALPEL));
     public static final RegistryObject<Item> WAX_SWORD =                regItem("wax_sword", () -> new ItemMagicSword(KCSwordTiers.WAX));
-    public static final RegistryObject<Item> BLADE_NIGHT =              regItem("blade_night", () -> new ItemMagicSword(KCSwordTiers.NIGHT_BLADE));
+    public static final RegistryObject<Item> BLADE_NIGHT =              regItem("blade_night", ItemNightSword::new);
 
     //ARMOR
     public static final RegistryObject<Item> HELMET_BLESSED_NIGHT =     regItem("helmet_blessed_night", () -> new ItemArmorBase(KCArmorTiers.BLESSED_NIGHT, EquipmentSlotType.HEAD));

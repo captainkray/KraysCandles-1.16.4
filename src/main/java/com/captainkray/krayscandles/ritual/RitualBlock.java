@@ -3,6 +3,7 @@ package com.captainkray.krayscandles.ritual;
 import com.captainkray.krayscandles.util.Location;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -45,5 +46,5 @@ public class RitualBlock {
         return world.getBlockState(pos.add(offset)).getBlock().getDefaultState() == state;
     }
 
-    public void onRitualComplete(World world, BlockPos pos) {}
+    public void onRitualComplete(World world, BlockPos pos, PlayerEntity player) {}
 }

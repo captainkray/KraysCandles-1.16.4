@@ -1,6 +1,6 @@
 package com.captainkray.krayscandles.client.render;
 
-import com.captainkray.krayscandles.tileentity.TileEntityStoneAlterTile;
+import com.captainkray.krayscandles.tileentity.TileEntityStoneAltarTile;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
@@ -16,18 +16,18 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class RenderStoneAlterTile extends TileEntityRenderer<TileEntityStoneAlterTile> {
+public class RenderStoneAltarTile extends TileEntityRenderer<TileEntityStoneAltarTile> {
 
     private long lastTime;
     private float rot;
     private float hover;
 
-    public RenderStoneAlterTile(TileEntityRendererDispatcher dispatcher) {
+    public RenderStoneAltarTile(TileEntityRendererDispatcher dispatcher) {
         super(dispatcher);
     }
 
     @Override
-    public void render (TileEntityStoneAlterTile mount, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer buffer, int combinedLight, int combinedOverlay) {
+    public void render (TileEntityStoneAltarTile mount, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer buffer, int combinedLight, int combinedOverlay) {
 
         if (!mount.getRitualStack().isEmpty()) {
 

@@ -1,7 +1,6 @@
 package com.captainkray.krayscandles.block;
 
 import com.captainkray.krayscandles.block.base.BlockBase;
-import com.captainkray.krayscandles.util.Location;
 import com.captainkray.krayscandles.util.ParticleHelper;
 import com.captainkray.krayscandles.util.ShapeBundle;
 import net.minecraft.block.*;
@@ -34,7 +33,7 @@ public class BlockStatue extends BlockBase {
     }
 
     public BlockStatue() {
-        super(Block.Properties.from(Blocks.STONE).sound(SoundType.STONE).notSolid().setLightLevel(value -> 1));
+        super(Block.Properties.from(Blocks.STONE).sound(SoundType.STONE).notSolid().setLightLevel(value -> 14));
     }
 
     @OnlyIn(Dist.CLIENT)

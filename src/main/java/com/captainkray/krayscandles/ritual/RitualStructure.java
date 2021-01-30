@@ -1,24 +1,43 @@
 package com.captainkray.krayscandles.ritual;
 
 import net.minecraft.util.Rotation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class RitualStructure {
 
     private final String name;
+    private SoundEvent sound;
+    private Supplier<SoundEvent> soundSupplier;
 
     private final List<RitualBlock> ritualBlocks = new ArrayList<>();
 
-    public RitualStructure(String name) {
+    public RitualStructure(String name, SoundEvent sound) {
         this.name = name;
+        this.sound = sound;
+    }
+
+    public RitualStructure(String name, Supplier<SoundEvent> soundSupplier) {
+        this.name = name;
+        this.soundSupplier = soundSupplier;
     }
 
     public String getName() {
         return name;
+    }
+
+    public SoundEvent getSound() {
+
+        if (soundSupplier != null) {
+            return soundSupplier.get();
+        }
+
+        return sound;
     }
 
     public List<RitualBlock> getRitualBlocks() {
@@ -38,7 +57,7 @@ public class RitualStructure {
 
     public RitualStructure getRotatedRitual() {
 
-        RitualStructure structure = new RitualStructure(name);
+        RitualStructure structure = new RitualStructure(name, sound);
 
         for (RitualBlock ritualBlock : getRitualBlocks()) {
             structure.addRitualBlock(ritualBlock.rotate(Rotation.CLOCKWISE_90));

@@ -69,7 +69,7 @@ public class WeaponKillEvents {
 
                 if (heldItem.getItem() == InitItems.BLADE_NIGHT.get()) {
 
-                    killedEntity.entityDropItem(InitItems.SOUL_ESSENCE_LESSER.get());
+                    if (!(killedEntity instanceof PlayerEntity)) killedEntity.entityDropItem(InitItems.SOUL_ESSENCE_LESSER.get());
                     event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.BLINDNESS, 300));
                     killedEntity.playSound(SoundEvents.AMBIENT_CAVE, 1, 1);
                     killedEntity.playSound(SoundEvents.ENTITY_GHAST_DEATH, 1, -7);
@@ -80,7 +80,7 @@ public class WeaponKillEvents {
                 }
 
                 else if (event.getEntity().getEntityWorld().rand.nextInt(5) == 0) {
-                    killedEntity.entityDropItem(InitItems.SOUL_ESSENCE_LESSER.get());
+                    if (!(killedEntity instanceof PlayerEntity)) killedEntity.entityDropItem(InitItems.SOUL_ESSENCE_LESSER.get());
                 }
             }
         }

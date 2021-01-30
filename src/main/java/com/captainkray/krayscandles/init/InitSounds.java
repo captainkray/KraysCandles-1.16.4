@@ -17,4 +17,8 @@ public class InitSounds {
     public static final RegistryObject<SoundEvent> WRAITH_DAMNED_DEATH = SOUNDS.register("entity.wraith_damned_death", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "entity.wraith_damned_death")));
     public static final RegistryObject<SoundEvent> WRAITH_DAMNED_AMBIENT = SOUNDS.register("entity.wraith_damned_ambient", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "entity.wraith_damned_ambient")));
     public static final RegistryObject<SoundEvent> WRAITH_DAMNED_HURT = SOUNDS.register("entity.wraith_damned_hurt", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "entity.wraith_damned_hurt")));
+
+    public static final RegistryObject<SoundEvent> RUNE_RITUAL = SOUNDS.register("block.rune_ritual", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "block.rune_ritual")));
+    public static final RegistryObject<SoundEvent> WAND_RITUAL = SOUNDS.register("block.wand_ritual", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "block.wand_ritual")));
+    public static final RegistryObject<SoundEvent> WRAITH_RITUAL = SOUNDS.register("block.wraith_ritual", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "block.wraith_ritual")));
 }

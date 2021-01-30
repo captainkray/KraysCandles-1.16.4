@@ -33,7 +33,7 @@ public class BlockBase extends Block {
 
         super.onReplaced(state, world, pos, newState, isMoving);
 
-        if (state.getBlock() != newState.getBlock()) {
+        if (state.getBlock() != newState.getBlock() && newState.isAir()) {
 
             if (isMoving && PistonBlock.canPush(state, world, pos, Direction.NORTH, false, Direction.NORTH)) {
                 return;

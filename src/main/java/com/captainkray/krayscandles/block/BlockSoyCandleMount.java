@@ -13,6 +13,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.PushReaction;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
@@ -154,6 +155,10 @@ public class BlockSoyCandleMount extends BlockCandleBase {
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         super.fillStateContainer(builder);
         builder.add(FACING);
+    }
+
+    public PushReaction getPushReaction() {
+        return PushReaction.BLOCK;
     }
 }
 

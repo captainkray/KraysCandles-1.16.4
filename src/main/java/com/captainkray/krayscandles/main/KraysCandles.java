@@ -1,12 +1,12 @@
 package com.captainkray.krayscandles.main;
 
+import com.captainkray.krayscandles.client.render.RenderCandleMount;
+import com.captainkray.krayscandles.client.render.RenderStoneAltarTile;
+import com.captainkray.krayscandles.client.render.RenderWraith;
 import com.captainkray.krayscandles.client.render.RenderWraithDamned;
 import com.captainkray.krayscandles.entity.EntityWraith;
 import com.captainkray.krayscandles.entity.EntityWraithDamned;
 import com.captainkray.krayscandles.init.*;
-import com.captainkray.krayscandles.client.render.RenderCandleMount;
-import com.captainkray.krayscandles.client.render.RenderStoneAlterTile;
-import com.captainkray.krayscandles.client.render.RenderWraith;
 import com.captainkray.krayscandles.ritual.RitualRecipes;
 import com.captainkray.krayscandles.ritual.RitualStructureTypes;
 import com.captainkray.krayscandles.tab.KCTabCandle;
@@ -61,9 +61,9 @@ public class KraysCandles {
         DeferredWorkQueue.runLater(() -> {
 
             DispenserBlock.registerDispenseBehavior(Items.FLINT_AND_STEEL, new DispenserLightBehavior());
-
-            RitualStructureTypes.init();
-            RitualRecipes.init();
+            DispenserBlock.registerDispenseBehavior(Items.LANTERN, new DispenserLightBehavior());
+            DispenserBlock.registerDispenseBehavior(Items.SOUL_LANTERN, new DispenserLightBehavior());
+            DispenserBlock.registerDispenseBehavior(InitItems.LANTERN_SOUL_TRAPPED.get().asItem(), new DispenserLightBehavior());
 
             GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_FIRE.get(), EntityWraith.setCustomAttributes().create());
             GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_WATER.get(), EntityWraith.setCustomAttributes().create());
@@ -72,6 +72,9 @@ public class KraysCandles {
             GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_MAGIC.get(), EntityWraith.setCustomAttributes().create());
             GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_MOB.get(), EntityWraith.setCustomAttributes().create());
             GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_DAMNED.get(), EntityWraithDamned.setCustomAttributes().create());
+
+            RitualStructureTypes.init();
+            RitualRecipes.init();
         });
     }
 
@@ -82,7 +85,7 @@ public class KraysCandles {
         InitRenderLayers.init();
 
         ClientRegistry.bindTileEntityRenderer(InitTileEntityTypes.CANDLE_SOY_MOUNT.get(), RenderCandleMount::new);
-        ClientRegistry.bindTileEntityRenderer(InitTileEntityTypes.STONE_ALTER_TILE.get(), RenderStoneAlterTile::new);
+        ClientRegistry.bindTileEntityRenderer(InitTileEntityTypes.STONE_ALTAR_TILE.get(), RenderStoneAltarTile::new);
 
         ItemModelsProperties.registerProperty(InitItems.CANDLE_SOY_COLORED_ITEM.get(), new ResourceLocation("color"), (stack, world, player) -> stack.getDamage());
 

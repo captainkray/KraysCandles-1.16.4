@@ -6,12 +6,12 @@ import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 
-public class TileEntityStoneAlterTile extends TileEntityBase {
+public class TileEntityStoneAltarTile extends TileEntityBase {
 
     private ItemStack ritualStack;
 
-    public TileEntityStoneAlterTile() {
-        super(InitTileEntityTypes.STONE_ALTER_TILE.get());
+    public TileEntityStoneAltarTile() {
+        super(InitTileEntityTypes.STONE_ALTAR_TILE.get());
         ritualStack = ItemStack.EMPTY;
     }
 
@@ -26,6 +26,7 @@ public class TileEntityStoneAlterTile extends TileEntityBase {
 
     public void takeRitualStack() {
         ritualStack = ItemStack.EMPTY;
+        if (!world.isRemote) markForUpdate();
     }
 
     @Override

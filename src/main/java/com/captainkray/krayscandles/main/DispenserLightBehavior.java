@@ -14,12 +14,16 @@ public class DispenserLightBehavior implements IDispenseItemBehavior {
     public ItemStack dispense(IBlockSource source, ItemStack stack) {
 
         Direction direction = source.getBlockState().get(DispenserBlock.FACING);
-
         Location location = new Location(source.getWorld(), source.getBlockPos().offset(direction));
 
-
         if (location.getBlock() instanceof BlockCandleBase) {
-            BlockCandleBase.setLit(location,!location.getBlockState().get(BlockCandleBase.LIT) );
+
+            if (location.getBlockState().get(BlockCandleBase.LIT)) {
+
+                BlockCandleBase.extinguishCandle(location, null);
+            }
+
+            else BlockCandleBase.lightCandle(location, null, stack);
         }
 
         return stack;

@@ -11,7 +11,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.PushReaction;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.BooleanProperty;
@@ -49,6 +51,48 @@ public abstract class BlockCandleBase extends BlockBase implements ITileEntityPr
     public abstract VoxelShape getCandleShape(BlockState state);
     public abstract void renderFlame(World world, BlockPos pos, BlockState state, Vector3d particlePos);
 
+    public static boolean lightCandle(Location location, PlayerEntity player, ItemStack lighter) {
+
+        boolean flintAndSteel = lighter.getItem() == Items.FLINT_AND_STEEL;
+        boolean lantern = lighter.getItem() == Items.LANTERN;
+        boolean soulLantern = lighter.getItem() == Items.SOUL_LANTERN;
+        boolean trappedSoulLantern = lighter.getItem() == InitItems.LANTERN_SOUL_TRAPPED.get().asItem();
+
+        if (!location.getBlockState().get(LIT)) {
+
+            if (flintAndSteel || lantern || soulLantern || trappedSoulLantern) {
+
+                setLit(location, true);
+
+                if (flintAndSteel) {
+                    if (!location.world.isRemote) lighter.attemptDamageItem(1, location.world.rand, (ServerPlayerEntity) player);
+                    if (player != null) player.playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, 1, 1);
+                }
+
+                else {
+
+                    if (lighter.getItem().equals(InitItems.LANTERN_SOUL_TRAPPED.get().asItem())) {
+                        String soulType = BlockLanternSoulTrappedItem.getSoulType(lighter);
+                        String soulName = BlockLanternSoulTrappedItem.getSoulName(lighter);
+                        attachSoul(location, soulType, soulName);
+                    }
+
+                    if (player != null) player.playSound(SoundEvents.ITEM_FIRECHARGE_USE, 1, 2);
+                }
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public static void extinguishCandle(Location location, PlayerEntity player) {
+        setLit(location, false);
+        attachSoul(location, "" ,"");
+        if(player != null) player.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 1, 2);
+    }
+
     public static void setLit(Location location, boolean value) {
         location.setBlock(location.getBlockState().with(LIT, value));
     }
@@ -68,46 +112,14 @@ public abstract class BlockCandleBase extends BlockBase implements ITileEntityPr
         Location location = new Location(world, pos);
         ItemStack stack = player.getHeldItem(hand);
 
-        boolean flintAndSteel = stack.getItem() == Items.FLINT_AND_STEEL;
-        boolean lantern = stack.getItem() == Items.LANTERN;
-        boolean soulLantern = stack.getItem() == Items.SOUL_LANTERN;
-        boolean trappedSoulLantern = stack.getItem() == InitItems.LANTERN_SOUL_TRAPPED.get().asItem();
+        if (!lightCandle(location, player, stack)) {
 
-        if (!state.get(LIT)) {
-
-            if (flintAndSteel || lantern || soulLantern || trappedSoulLantern) {
-
-                if (flintAndSteel) {
-                    stack.damageItem(1, player, (i) -> i.sendBreakAnimation(hand));
-                    player.playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, 1, 1);
-                }
-
-                if (lantern || soulLantern || trappedSoulLantern) {
-
-                    player.playSound(SoundEvents.ITEM_FIRECHARGE_USE, 1, 2);
-
-                    if (trappedSoulLantern) {
-                        String soulType = BlockLanternSoulTrappedItem.getSoulType(stack);
-                        String soulName = BlockLanternSoulTrappedItem.getSoulName(stack);
-                        attachSoul(location, soulType, soulName);
-                    }
-                }
-
-                setLit(location, true);
-                return ActionResultType.SUCCESS;
-            }
-        }
-
-        else {
-
-            if (soulLantern) {
-
+            if (stack.getItem() == InitItems.LANTERN_SOUL_TRAPPED.get().asItem() || stack.getItem() == Items.SOUL_LANTERN) {
                 BlockLanternSoulTrappedItem.trapSoul(player, stack, ((ISoulFlame)location.getTileEntity()).getEntityTypeFromSoul());
-                return ActionResultType.SUCCESS;
             }
         }
 
-        return ActionResultType.PASS;
+        return ActionResultType.SUCCESS;
     }
 
     @Override
@@ -115,10 +127,7 @@ public abstract class BlockCandleBase extends BlockBase implements ITileEntityPr
         Location location = new Location(world, pos);
 
         if (state.get(LIT)) {
-            setLit(location, false);
-            // Caleb Helped do a quick fix.
-            attachSoul(new Location(world , pos) , "" ,"");
-            player.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 1, 2);
+            extinguishCandle(location, player);
         }
     }
 
@@ -148,5 +157,10 @@ public abstract class BlockCandleBase extends BlockBase implements ITileEntityPr
     @Override
     public VoxelShape getCollisionShape (BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
         return getCandleShape(state);
+    }
+
+    @Override
+    public PushReaction getPushReaction(BlockState state) {
+        return PushReaction.PUSH_ONLY;
     }
 }

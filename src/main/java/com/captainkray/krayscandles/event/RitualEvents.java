@@ -3,8 +3,10 @@ package com.captainkray.krayscandles.event;
 import com.captainkray.krayscandles.entity.EntityWraithDamned;
 import com.captainkray.krayscandles.ritual.RitualRecipe;
 import com.captainkray.krayscandles.ritual.RitualRecipes;
+import com.captainkray.krayscandles.ritual.RitualStructureTypes;
 import com.captainkray.krayscandles.util.ItemHelper;
 import com.captainkray.krayscandles.util.Location;
+import com.captainkray.krayscandles.util.WorldEffectHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -33,7 +35,7 @@ public class RitualEvents {
 
                 if (handAir || recipe.getHandItem().equals(player.getHeldItem(Hand.MAIN_HAND).getItem())) {
 
-                    if (recipe.isRitualComplete(world, pos)) {
+                    if (recipe.isRitualComplete(world, pos, player)) {
 
                         if (recipe.getBlockResult() != null) {
                             location.setBlock(recipe.getBlockResult());
@@ -43,12 +45,18 @@ public class RitualEvents {
                             ItemHelper.spawnStackAtEntity(world, player, new ItemStack(recipe.getDropResult()));
                         }
 
-                        if (recipe == RitualRecipes.WRAITH) {
+                        if (recipe.getRitualStructure() == RitualStructureTypes.CANDLE) {
+                            WorldEffectHelper.spawnLightning(world, location.x + 0.5F, location.y, location.z + 0.5F, true);
+                        }
+
+                        else if (recipe == RitualRecipes.WRAITH) {
                             world.addEntity(new EntityWraithDamned(world, pos));
                         }
 
                         if (!handAir) player.getHeldItem(Hand.MAIN_HAND).shrink(1);
                         player.swingArm(Hand.MAIN_HAND);
+
+                        player.playSound(recipe.getRitualStructure().getSound(), 1, 1);
 
                         return;
                     }

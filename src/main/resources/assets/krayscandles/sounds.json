@@ -58,5 +58,35 @@
         "stream": true
       }
     ]
+  },
+  "block.wraith_ritual": {
+    "category": "block",
+    "subtitle": "block.wraith_ritual.sub",
+    "sounds": [
+      {
+        "name": "krayscandles:block/wraith_ritual",
+        "stream": true
+      }
+    ]
+  },
+  "block.wand_ritual": {
+    "category": "block",
+    "subtitle": "block.wand_ritual.sub",
+    "sounds": [
+      {
+        "name": "krayscandles:block/wand_ritual",
+        "stream": true
+      }
+    ]
+  },
+  "block.rune_ritual": {
+    "category": "block",
+    "subtitle": "block.rune_ritual.sub",
+    "sounds": [
+      {
+        "name": "krayscandles:block/rune_ritual",
+        "stream": true
+      }
+    ]
   }
 }

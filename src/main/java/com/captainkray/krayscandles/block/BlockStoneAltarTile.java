@@ -2,7 +2,7 @@ package com.captainkray.krayscandles.block;
 
 import com.captainkray.krayscandles.block.base.BlockBase;
 import com.captainkray.krayscandles.init.InitTileEntityTypes;
-import com.captainkray.krayscandles.tileentity.TileEntityStoneAlterTile;
+import com.captainkray.krayscandles.tileentity.TileEntityStoneAltarTile;
 import com.captainkray.krayscandles.util.ItemHelper;
 import com.captainkray.krayscandles.util.Location;
 import com.captainkray.krayscandles.util.ShapeBundle;
@@ -44,9 +44,9 @@ public class BlockStoneAltarTile extends BlockBase implements ITileEntityProvide
         Location location = new Location(world, pos);
         ItemStack stack = player.getHeldItem(Hand.MAIN_HAND);
 
-        if (location.getTileEntity() != null && location.getTileEntity() instanceof TileEntityStoneAlterTile) {
+        if (location.getTileEntity() != null && location.getTileEntity() instanceof TileEntityStoneAltarTile) {
 
-            TileEntityStoneAlterTile alterTile = (TileEntityStoneAlterTile) location.getTileEntity();
+            TileEntityStoneAltarTile alterTile = (TileEntityStoneAltarTile) location.getTileEntity();
 
             if (alterTile.getRitualStack().isEmpty() && !stack.isEmpty()) {
                 alterTile.placeRitualStack(stack.copy());
@@ -78,9 +78,9 @@ public class BlockStoneAltarTile extends BlockBase implements ITileEntityProvide
         Location location = new Location(world, pos);
         TileEntity tileEntity = location.getTileEntity();
 
-        if (tileEntity instanceof TileEntityStoneAlterTile) {
+        if (tileEntity instanceof TileEntityStoneAltarTile) {
 
-            TileEntityStoneAlterTile alterTile = (TileEntityStoneAlterTile) location.getTileEntity();
+            TileEntityStoneAltarTile alterTile = (TileEntityStoneAltarTile) location.getTileEntity();
 
             if (!alterTile.getRitualStack().isEmpty()) {
                 list.add(alterTile.getRitualStack());
@@ -90,7 +90,7 @@ public class BlockStoneAltarTile extends BlockBase implements ITileEntityProvide
 
     @Override
     public TileEntity createNewTileEntity(IBlockReader worldIn) {
-        return InitTileEntityTypes.STONE_ALTER_TILE.get().create();
+        return InitTileEntityTypes.STONE_ALTAR_TILE.get().create();
     }
 
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {

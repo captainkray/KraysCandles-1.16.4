@@ -1,10 +1,11 @@
 package com.captainkray.krayscandles.ritual;
 
-import com.captainkray.krayscandles.tileentity.TileEntityStoneAlterTile;
+import com.captainkray.krayscandles.tileentity.TileEntityStoneAltarTile;
 import com.captainkray.krayscandles.tileentity.base.TileEntityCandleBase;
 import com.captainkray.krayscandles.util.Location;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.math.BlockPos;
@@ -18,7 +19,7 @@ public class RitualRecipe {
     private final boolean baseRecipe;
     private RitualStructure ritualStructure;
 
-    private final List<Item> alterItems = new ArrayList<>();
+    private final List<Item> altarItems = new ArrayList<>();
     private final List<EntityType<?>> soulFlameTypes = new ArrayList<>();
 
     private Item handItem = Items.AIR;
@@ -41,7 +42,7 @@ public class RitualRecipe {
 
     public void addBaseRecipe(RitualRecipe baseRecipe) {
         ritualStructure = baseRecipe.ritualStructure;
-        alterItems.addAll(baseRecipe.alterItems);
+        altarItems.addAll(baseRecipe.altarItems);
         soulFlameTypes.addAll(baseRecipe.soulFlameTypes);
         handItem = baseRecipe.handItem;
     }
@@ -53,7 +54,7 @@ public class RitualRecipe {
     public void addIngredient(Item alterItem, int count) {
 
         for (int i = 0; i < count; i++) {
-            alterItems.add(alterItem);
+            altarItems.add(alterItem);
         }
     }
 
@@ -77,8 +78,8 @@ public class RitualRecipe {
         return blockResult;
     }
 
-    public List<Item> getAlterItems() {
-        return alterItems;
+    public List<Item> getAltarItems() {
+        return altarItems;
     }
 
     public void setHandItem(Item handItem) {
@@ -93,7 +94,7 @@ public class RitualRecipe {
         this.blockResult = blockResult;
     }
 
-    public boolean isRitualComplete(World world, BlockPos pos) {
+    public boolean isRitualComplete(World world, BlockPos pos, PlayerEntity player) {
 
         if (baseRecipe) {
             return false;
@@ -107,13 +108,13 @@ public class RitualRecipe {
             return false;
         }
 
-        List<Item> alterItemsCopy = new ArrayList<>(this.alterItems);
+        List<Item> alterItemsCopy = new ArrayList<>(this.altarItems);
         List<EntityType<?>> soulFlameTypesCopy = new ArrayList<>(this.soulFlameTypes);
 
         if (searchRitualStructure(world, pos, alterItemsCopy, soulFlameTypesCopy, getRitualStructure())) {
 
             for (RitualBlock ritualBlock : getRitualStructure().getRitualBlocks()) {
-                ritualBlock.onRitualComplete(world, pos);
+                ritualBlock.onRitualComplete(world, pos, player);
             }
 
             return true;
@@ -122,7 +123,7 @@ public class RitualRecipe {
         if (searchRitualStructure(world, pos, alterItemsCopy, soulFlameTypesCopy, getRitualStructure().getRotatedRitual())) {
 
             for (RitualBlock ritualBlock : getRitualStructure().getRotatedRitual().getRitualBlocks()) {
-                ritualBlock.onRitualComplete(world, pos);
+                ritualBlock.onRitualComplete(world, pos, player);
             }
 
             return true;
@@ -137,13 +138,13 @@ public class RitualRecipe {
 
             Location location = ritualBlock.getLocation(world, pos);
 
-            if (ritualBlock instanceof RitualBlockAlter) {
+            if (ritualBlock instanceof RitualBlockAltar) {
 
-                if (location.getTileEntity() instanceof TileEntityStoneAlterTile) {
+                if (location.getTileEntity() instanceof TileEntityStoneAltarTile) {
 
                     for (Item alterItem : alterItems) {
 
-                        if (alterItem.equals(((TileEntityStoneAlterTile) location.getTileEntity()).getRitualStack().getItem())) {
+                        if (alterItem.equals(((TileEntityStoneAltarTile) location.getTileEntity()).getRitualStack().getItem())) {
                             alterItems.remove(alterItem);
                             break;
                         }
