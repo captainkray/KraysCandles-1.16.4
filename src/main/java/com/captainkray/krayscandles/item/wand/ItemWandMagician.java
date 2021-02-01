@@ -34,7 +34,7 @@ public class ItemWandMagician extends ItemWandBase {
 
     @Override
     public RitualRecipe getRitualRecipe() {
-        return RitualRecipes.WAND_LEVITATE;
+        return RitualRecipes.WAND_INVIS;
     }
 }
 
