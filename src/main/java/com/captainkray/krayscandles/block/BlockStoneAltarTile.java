@@ -60,7 +60,7 @@ public class BlockStoneAltarTile extends BlockBase implements ITileEntityProvide
                 ItemStack copiedStack = alterTile.getRitualStack().copy();
                 copiedStack.setCount(1);
 
-                ItemHelper.spawnStackAtEntity(world, player, copiedStack);
+                ItemHelper.spawnStackAtLocation(world, location, copiedStack);
                 alterTile.takeRitualStack();
 
                 player.playSound(SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM, 1, 1);

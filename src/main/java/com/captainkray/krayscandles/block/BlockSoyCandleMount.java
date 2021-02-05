@@ -102,7 +102,7 @@ public class BlockSoyCandleMount extends BlockCandleBase {
             if (!mount.getCandleStack().isEmpty()) {
 
                 if (heldStack.isEmpty()) {
-                    ItemHelper.spawnStackAtEntity(world, player, mount.getCandleStack());
+                    ItemHelper.spawnStackAtLocation(world, location, mount.getCandleStack());
                     mount.takeCandle();
                     setLit(location, false);
                     mount.setSoul("", "");

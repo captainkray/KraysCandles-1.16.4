@@ -17,6 +17,10 @@ public class ItemHelper {
         return is.getTag();
     }
 
+    public static void spawnStackAtLocation(World world, Location location, ItemStack stack) {
+        spawnStack(world, (float) location.x + 0.5F, (float) location.y + 0.5F, (float) location.z + 0.5F, stack);
+    }
+
     public static void spawnStackAtEntity(World world, Entity entity, ItemStack stack) {
         spawnStack(world, (float) entity.getPosition().getX() + 0.5F, (float) entity.getPosition().getY() + 0.5F, (float) entity.getPosition().getZ() + 0.5F, stack);
     }
