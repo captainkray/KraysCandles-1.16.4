@@ -1,6 +1,8 @@
 package com.captainkray.krayscandles.item.tier;
 
+import com.captainkray.krayscandles.init.InitItems;
 import net.minecraft.item.IItemTier;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyValue;
 
@@ -8,9 +10,9 @@ import java.util.function.Supplier;
 
 public enum KCSwordTiers implements IItemTier {
 
-    NIGHT_BLADE (200, 8F, 14, 1.2F, () -> null),
-    SCALPEL     (50, 5F, 10, 0.9F, () -> null),
-    WAX         (50, 2.5F, 12, 1.5F, () -> null);
+    NIGHT_BLADE (200, 8F, 14, 1.2F, () -> {return Ingredient.fromItems(Items.IRON_INGOT);}),
+    SCALPEL     (50, 5F, 10, 0.9F, () -> {return Ingredient.fromItems(Items.IRON_INGOT);}),
+    WAX         (50, 2.5F, 12, 1.5F, () -> {return Ingredient.fromItems(InitItems.WAX_CHUNK_SOY_SMALL.get());});
 
     public final int durability;
     public final float efficiency;
