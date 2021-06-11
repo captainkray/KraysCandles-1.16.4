@@ -31,8 +31,6 @@ public class BlockBase extends Block {
     @Override
     public void onReplaced (BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving) {
 
-        super.onReplaced(state, world, pos, newState, isMoving);
-
         if (state.getBlock() != newState.getBlock() && newState.isAir()) {
 
             if (isMoving && PistonBlock.canPush(state, world, pos, Direction.NORTH, false, Direction.NORTH)) {
@@ -48,5 +46,7 @@ public class BlockBase extends Block {
 
             super.onReplaced(state, world, pos, newState, isMoving);
         }
+
+        super.onReplaced(state, world, pos, newState, isMoving);
     }
 }

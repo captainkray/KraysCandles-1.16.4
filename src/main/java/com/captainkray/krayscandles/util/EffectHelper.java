@@ -21,7 +21,7 @@ public class EffectHelper {
     /**
      * Infinite potion effects last until they are removed.
      */
-    public static void addInfinitePotionEffect(Effect effect, int durectionTicks, int amplifier, PlayerEntity... players) {
+    public static void addInfinitePotionEffect(Effect effect, int durationTicks, int amplifier, PlayerEntity... players) {
         addPotionEffect(effect, 1000000, amplifier, players);
     }
 }

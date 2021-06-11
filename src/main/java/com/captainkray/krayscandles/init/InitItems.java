@@ -59,7 +59,7 @@ public class InitItems {
     public static final RegistryObject<Item> SOUL_ESSENCE_GREATER_DEPLETED = regItem("soul_essence_greater_depleted", ItemBase::new);
     public static final RegistryObject<Item> SOUL_ESSENCE_GREATER =          regItem("soul_essence_greater", () -> new ItemRitual(RitualRecipes.ESSENCE_GREATER));
     public static final RegistryObject<Item> SOUL_ESSENCE_BLESSED_DEPLETED = regItem("soul_essence_blessed_depleted", ItemBase::new);
-    public static final RegistryObject<Item> SOUL_ESSENCE_BLESSED =          regItem("soul_essence_blessed", () -> new ItemRitual(RitualRecipes.ESSENCE_GREATER));
+    public static final RegistryObject<Item> SOUL_ESSENCE_BLESSED =          regItem("soul_essence_blessed", () -> new ItemRitual(RitualRecipes.ESSENCE_BLESSED));
 
     public static final RegistryObject<Item> IRON_PRESS =                    regItem("iron_press", () -> new ItemBase().setTag("iron_press"));
     public static final RegistryObject<Item> IRON_PRESS_FULL =               regItem("iron_press_full", () -> new ItemBase().setTag("iron_press"));

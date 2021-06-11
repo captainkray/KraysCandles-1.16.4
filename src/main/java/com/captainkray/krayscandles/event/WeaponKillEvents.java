@@ -2,6 +2,8 @@ package com.captainkray.krayscandles.event;
 
 import com.captainkray.krayscandles.block.BlockLanternSoulTrappedItem;
 import com.captainkray.krayscandles.init.InitItems;
+import com.captainkray.krayscandles.util.MathHelper;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.monster.ZombieEntity;
@@ -69,7 +71,17 @@ public class WeaponKillEvents {
 
                 if (heldItem.getItem() == InitItems.BLADE_NIGHT.get()) {
 
-                    if (!(killedEntity instanceof PlayerEntity)) killedEntity.entityDropItem(InitItems.SOUL_ESSENCE_LESSER.get());
+                    if (!(killedEntity instanceof PlayerEntity)) {
+
+                        int lootingLevel = EnchantmentHelper.getLootingModifier(player);
+
+                        if (MathHelper.roll(25 + (lootingLevel * 25))) {
+                            killedEntity.entityDropItem(InitItems.SOUL_ESSENCE_LESSER.get());
+                        }
+
+                        killedEntity.entityDropItem(InitItems.SOUL_ESSENCE_LESSER.get());
+                    }
+
                     event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.BLINDNESS, 300));
                     killedEntity.playSound(SoundEvents.AMBIENT_CAVE, 1, 1);
                     killedEntity.playSound(SoundEvents.ENTITY_GHAST_DEATH, 1, -7);

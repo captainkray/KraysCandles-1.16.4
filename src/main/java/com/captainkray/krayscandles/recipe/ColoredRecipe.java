@@ -23,7 +23,6 @@ public abstract class ColoredRecipe extends SpecialRecipe {
     @Override
     public boolean matches(CraftingInventory inv, World world) {
 
-        int emptyCount = 0;
         int itemCount = 0;
         int dyeCount = 0;
 
@@ -35,16 +34,16 @@ public abstract class ColoredRecipe extends SpecialRecipe {
                 itemCount++;
             }
 
-            if (stackInSlot.getItem() instanceof DyeItem) {
+            else if (stackInSlot.getItem() instanceof DyeItem) {
                 dyeCount++;
             }
 
-            else if (stackInSlot.isEmpty()) {
-                emptyCount++;
+            else if (!stackInSlot.isEmpty()) {
+                return false;
             }
         }
 
-        return emptyCount == 7 && itemCount == 1 && dyeCount == 1;
+        return itemCount == 1 && dyeCount == 1;
     }
 
     @Override

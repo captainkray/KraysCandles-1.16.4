@@ -6,6 +6,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.SoundEvents;
 import net.minecraftforge.event.entity.living.PotionEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -15,6 +16,8 @@ public class EffectEvents {
     public void onEffectAdded(PotionEvent.PotionAddedEvent event) {
 
         if (event.getPotionEffect().getPotion() == InitEffects.FLIGHT.get()) {
+
+            event.getEntityLiving().removePotionEffect(Effects.SLOW_FALLING);
 
             if (event.getEntityLiving() instanceof PlayerEntity) {
                 PlayerEntity player = (PlayerEntity) event.getEntityLiving();
@@ -26,27 +29,25 @@ public class EffectEvents {
 
     @SubscribeEvent
     public void onEffectDropped(PotionEvent.PotionExpiryEvent event) {
-        if (event.getPotionEffect() != null) removeFlight(event.getPotionEffect().getPotion(), event.getEntityLiving());
+        if (event.getPotionEffect() != null && event.getPotionEffect().getPotion() == InitEffects.FLIGHT.get()) removeFlight(event.getPotionEffect().getPotion(), event.getEntityLiving());
     }
 
     @SubscribeEvent
     public void onEffectDropped(PotionEvent.PotionRemoveEvent event) {
-        if (event.getPotionEffect() != null) removeFlight(event.getPotionEffect().getPotion(), event.getEntityLiving());
+        if (event.getPotionEffect() != null && event.getPotionEffect().getPotion() == InitEffects.FLIGHT.get()) removeFlight(event.getPotionEffect().getPotion(), event.getEntityLiving());
     }
 
     private void removeFlight(Effect effect, LivingEntity entity) {
 
-        if (effect == InitEffects.FLIGHT.get()) {
+        if (entity instanceof PlayerEntity) {
 
-            if (entity instanceof PlayerEntity) {
-                PlayerEntity player = (PlayerEntity) entity;
+            PlayerEntity player = (PlayerEntity) entity;
 
-                player.abilities.allowFlying = false;
-                player.abilities.isFlying = false;
-                player.sendPlayerAbilities();
+            player.playSound(SoundEvents.BLOCK_BEACON_DEACTIVATE, 1, 10);
 
-                EffectHelper.addPotionEffect(Effects.SLOW_FALLING, 20*30, 0, player);
-            }
+            player.abilities.allowFlying = false;
+            player.abilities.isFlying = false;
+            player.sendPlayerAbilities();
         }
     }
 }
