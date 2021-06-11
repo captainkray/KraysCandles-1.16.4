@@ -46,6 +46,7 @@ public class KraysCandles {
         MOD_EVENT_BUS.addListener(this::onCommonSetup);
         MOD_EVENT_BUS.addListener(this::onClientSetup);
 
+
         InitItems.init();
         InitSounds.SOUNDS.register(MOD_EVENT_BUS);
         InitEffects.POTION_TYPES.register(MOD_EVENT_BUS);

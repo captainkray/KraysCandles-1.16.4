@@ -15,8 +15,10 @@ import com.captainkray.krayscandles.item.tier.KCArmorTiers;
 import com.captainkray.krayscandles.item.tier.KCSwordTiers;
 import com.captainkray.krayscandles.ritual.RitualRecipes;
 import net.minecraft.block.Block;
+import net.minecraft.client.audio.SoundList;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -35,6 +37,7 @@ public class InitItems {
     }
 
     //------ITEMS------\\
+
 
     //INGREDIENTS
 
@@ -115,7 +118,7 @@ public class InitItems {
     public static final RegistryObject<Item> BLADE_NIGHT =              regItem("blade_night", ItemNightSword::new);
 
     //ARMOR
-    public static final RegistryObject<Item> HELMET_BLESSED_NIGHT =     regItem("helmet_blessed_night", () -> new ItemArmorBase(KCArmorTiers.BLESSED_NIGHT, EquipmentSlotType.HEAD));
+    public static final RegistryObject<Item> HELMET_BLESSED_NIGHT =     regItem("helmet_blessed_night", ItemBlessedNightHelmet::new);
 
     //RITUAL NOTES
     public static final RegistryObject<Item> RITUAL_NOTE_ESSENCE =       regItem("ritual_note_essence", ItemBase::new);
@@ -123,6 +126,11 @@ public class InitItems {
     public static final RegistryObject<Item> RITUAL_NOTE_CANDLE =       regItem("ritual_note_candle", ItemBase::new);
     public static final RegistryObject<Item> RITUAL_NOTE_WAND =       regItem("ritual_note_wand", ItemBase::new);
     public static final RegistryObject<Item> RITUAL_NOTE_WRAITH =       regItem("ritual_note_wraith", ItemBase::new);
+
+    //MUSIC DISCS
+    public static final RegistryObject<Item> MUSIC_DISC_CHUNK =             regItem("music_disc_chunk", ItemMusicDiscChunk::new);
+
+
 
     //------BLOCKS------\\
 
@@ -162,13 +170,20 @@ public class InitItems {
     public static final RegistryObject<Block> WAXED_SAND =                    regBlock("waxed_sand", KraysCandles.TAB_MAIN, BlockWaxed::new);
     public static final RegistryObject<Block> WAXED_GRAVEL =                  regBlock("waxed_gravel", KraysCandles.TAB_MAIN, BlockWaxed::new);
 
+
+
     public static RegistryObject<Item> regItem(String name, final Supplier<? extends Item> sup) {
         return ITEMS.register(name, sup);
     }
+
 
     public static RegistryObject<Block> regBlock(String name, ItemGroup tab, final Supplier<? extends Block> sup) {
         RegistryObject<Block> registryBlock = BLOCKS.register(name, sup);
         RegistryObject<Item> registryItem = ITEMS.register(name, () -> new BlockItemBase(registryBlock.get(), tab));
         return registryBlock;
     }
+
+
+
+
 }

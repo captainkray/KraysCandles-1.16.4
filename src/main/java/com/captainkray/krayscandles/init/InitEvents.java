@@ -7,7 +7,6 @@ public class InitEvents {
 
     public static void initCommon() {
         MinecraftForge.EVENT_BUS.register(new RitualEvents());
-        MinecraftForge.EVENT_BUS.register(new ArmorEvents());
         MinecraftForge.EVENT_BUS.register(new WeaponKillEvents());
         MinecraftForge.EVENT_BUS.register(new WraithSpawnEvents());
         MinecraftForge.EVENT_BUS.register(new RecipeEvents());

@@ -1,8 +1,12 @@
 package com.captainkray.krayscandles.init;
 
+import com.captainkray.krayscandles.item.ItemMusicDiscChunk;
 import com.captainkray.krayscandles.main.KCReference;
+import com.captainkray.krayscandles.main.KraysCandles;
+import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -21,4 +25,9 @@ public class InitSounds {
     public static final RegistryObject<SoundEvent> RUNE_RITUAL = SOUNDS.register("block.rune_ritual", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "block.rune_ritual")));
     public static final RegistryObject<SoundEvent> WAND_RITUAL = SOUNDS.register("block.wand_ritual", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "block.wand_ritual")));
     public static final RegistryObject<SoundEvent> WRAITH_RITUAL = SOUNDS.register("block.wraith_ritual", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "block.wraith_ritual")));
+
+
+    public static final RegistryObject<SoundEvent> MUSIC_DISC_CHUNK= SOUNDS.register("item.music_disc_chunk" , () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "item.music_disc_chunk")));
+
+
 }

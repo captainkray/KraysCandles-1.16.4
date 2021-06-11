@@ -24,6 +24,7 @@ public class ArmorEvents {
         }
 
         else {
+            System.out.println("CALL");
             entity.setGlowing(false);
             entity.removePotionEffect(Effects.NIGHT_VISION);
         }
