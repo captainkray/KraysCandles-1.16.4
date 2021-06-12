@@ -42,7 +42,7 @@ public class LoreEvents {
                     event.getToolTip().add(new StringTextComponent(TextFormatting.GRAY + "Made in the " + TextFormatting.LIGHT_PURPLE + recipe.getRitualStructure().getName() + " Ritual"));
                     event.getToolTip().add(new StringTextComponent(TextFormatting.GRAY + "Use item in center: "));
                     event.getToolTip().add(new StringTextComponent(TextFormatting.LIGHT_PURPLE + recipe.getHandItem().getItem().getName().getString()));
-                    if (!recipe.getAltarItems().isEmpty()) event.getToolTip().add(new StringTextComponent(TextFormatting.GRAY + "Place in alters:"));
+                    if (!recipe.getAltarItems().isEmpty()) event.getToolTip().add(new StringTextComponent(TextFormatting.GRAY + "Place in altars:"));
 
                     List<Item> passedItems = new ArrayList<>();
 
