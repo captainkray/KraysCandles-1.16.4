@@ -8,17 +8,12 @@ import com.captainkray.krayscandles.block.base.BlockItemBase;
 import com.captainkray.krayscandles.block.BlockWaxed;
 import com.captainkray.krayscandles.block.candle.*;
 import com.captainkray.krayscandles.item.*;
-import com.captainkray.krayscandles.item.base.ItemArmorBase;
 import com.captainkray.krayscandles.item.base.ItemBase;
 import com.captainkray.krayscandles.item.base.ItemFoodBase;
-import com.captainkray.krayscandles.item.tier.KCArmorTiers;
 import com.captainkray.krayscandles.item.tier.KCSwordTiers;
 import com.captainkray.krayscandles.ritual.RitualRecipes;
 import net.minecraft.block.Block;
-import net.minecraft.client.audio.SoundList;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
-import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -128,7 +123,7 @@ public class InitItems {
     public static final RegistryObject<Item> RITUAL_NOTE_WRAITH =       regItem("ritual_note_wraith", ItemBase::new);
 
     //MUSIC DISCS
-    public static final RegistryObject<Item> MUSIC_DISC_CHUNK =             regItem("music_disc_chunk", ItemMusicDiscChunk::new);
+    public static final RegistryObject<Item> MUSIC_DISC_CHUNK =                  regItem("music_disc_chunk", () -> new ItemDiscChunk(InitSounds.MUSIC_DISC_CHUNK));
 
 
 

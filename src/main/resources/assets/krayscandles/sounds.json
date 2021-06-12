@@ -89,12 +89,12 @@
       }
     ]
   },
-  "item.music_disc_chunk": {
-    "category": "item",
-    "subtitle": "item.music_disc_chunk.sub",
+  "disc.music_disc_chunk": {
+    "category": "disc",
+    "subtitle": "Kray - chunk",
     "sounds": [
       {
-        "name": "krayscandles:item/music_disc_chunk",
+        "name": "krayscandles:disc/music_disc_chunk",
         "stream": true
       }
     ]
