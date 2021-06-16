@@ -1,9 +1,7 @@
 package com.captainkray.krayscandles.main;
 
-import com.captainkray.krayscandles.client.render.RenderCandleMount;
-import com.captainkray.krayscandles.client.render.RenderStoneAltarTile;
-import com.captainkray.krayscandles.client.render.RenderWraith;
-import com.captainkray.krayscandles.client.render.RenderWraithDamned;
+import com.captainkray.krayscandles.client.render.*;
+import com.captainkray.krayscandles.entity.EntityVampire;
 import com.captainkray.krayscandles.entity.EntityWraith;
 import com.captainkray.krayscandles.entity.EntityWraithDamned;
 import com.captainkray.krayscandles.init.*;
@@ -73,6 +71,7 @@ public class KraysCandles {
             GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_MAGIC.get(), EntityWraith.setCustomAttributes().create());
             GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_MOB.get(), EntityWraith.setCustomAttributes().create());
             GlobalEntityTypeAttributes.put(InitEntityTypes.WRAITH_DAMNED.get(), EntityWraithDamned.setCustomAttributes().create());
+            GlobalEntityTypeAttributes.put(InitEntityTypes.VAMPIRE.get(), EntityVampire.setCustomAttributes().create());
 
             RitualStructureTypes.init();
             RitualRecipes.init();
@@ -97,5 +96,6 @@ public class KraysCandles {
         RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH_MAGIC.get(), RenderWraith::new);
         RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH_MOB.get(), RenderWraith::new);
         RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.WRAITH_DAMNED.get(), RenderWraithDamned::new);
+        RenderingRegistry.registerEntityRenderingHandler(InitEntityTypes.VAMPIRE.get(), RenderVampire::new);
     }
 }

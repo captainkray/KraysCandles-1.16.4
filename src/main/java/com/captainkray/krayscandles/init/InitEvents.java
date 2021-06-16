@@ -13,6 +13,7 @@ public class InitEvents {
         MinecraftForge.EVENT_BUS.register(new BlockDropEvents());
         MinecraftForge.EVENT_BUS.register(new EntityDropEvents());
         MinecraftForge.EVENT_BUS.register(new EffectEvents());
+        MinecraftForge.EVENT_BUS.register(new VampireSpawnEvents());
     }
 
     public static void initClient() {

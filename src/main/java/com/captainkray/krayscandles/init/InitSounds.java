@@ -23,8 +23,11 @@ public class InitSounds {
     public static final RegistryObject<SoundEvent> WAND_RITUAL = SOUNDS.register("block.wand_ritual", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "block.wand_ritual")));
     public static final RegistryObject<SoundEvent> WRAITH_RITUAL = SOUNDS.register("block.wraith_ritual", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "block.wraith_ritual")));
 
-
     public static final RegistryObject<SoundEvent> MUSIC_DISC_CHUNK = SOUNDS.register("disc.music_disc_chunk", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "disc.music_disc_chunk")));
 
 
+    public static final RegistryObject<SoundEvent> VAMPIRE_AMBIENT = SOUNDS.register("entity.vampire_ambient", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "entity.vampire_ambient")));
+    public static final RegistryObject<SoundEvent> VAMPIRE_HURT = SOUNDS.register("entity.vampire_hurt", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "entity.vampire_hurt")));
+    public static final RegistryObject<SoundEvent> VAMPIRE_DEATH = SOUNDS.register("entity.vampire_death", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "entity.vampire_death")));
+    public static final RegistryObject<SoundEvent> VAMPIRE_VANISH = SOUNDS.register("entity.vampire_vanish", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "entity.vampire_vanish")));
 }
