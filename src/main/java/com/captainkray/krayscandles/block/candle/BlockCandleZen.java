@@ -4,6 +4,7 @@ import com.captainkray.krayscandles.block.base.BlockCandleBase;
 import com.captainkray.krayscandles.init.InitTileEntityTypes;
 import com.captainkray.krayscandles.ritual.RitualRecipe;
 import com.captainkray.krayscandles.ritual.RitualRecipes;
+import com.captainkray.krayscandles.util.Location;
 import com.captainkray.krayscandles.util.ParticleHelper;
 import com.captainkray.krayscandles.util.ShapeBundle;
 import net.minecraft.block.Block;
@@ -42,8 +43,8 @@ public class BlockCandleZen extends BlockCandleBase {
     }
 
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-        placer.playSound(SoundEvents.BLOCK_BEEHIVE_EXIT, 1, 5);
+    public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+        new Location(world, pos).playSound(SoundEvents.BLOCK_BEEHIVE_EXIT, 1, 5);
     }
 
     @Override

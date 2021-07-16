@@ -8,6 +8,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
@@ -115,6 +117,10 @@ public class Location {
 
     public void setBlockToAir () {
         setBlock(Blocks.AIR);
+    }
+
+    public void playSound(SoundEvent sound, float volume, float pitch) {
+        if (!world.isRemote) world.playSound(null, blockPos, sound, SoundCategory.BLOCKS, volume, pitch);
     }
 
     @Override

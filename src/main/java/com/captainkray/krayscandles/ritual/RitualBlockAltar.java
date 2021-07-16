@@ -47,6 +47,6 @@ public class RitualBlockAltar extends RitualBlock {
             world.addParticle(ParticleTypes.SMOKE, location.x + rand.nextDouble(), location.y + 0.2F, location.z + rand.nextDouble(), 0, 0, 0);
         }
 
-        player.playSound(SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM, 0.05F, 1);
+        location.playSound(SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM, 0.05F, 1);
     }
 }

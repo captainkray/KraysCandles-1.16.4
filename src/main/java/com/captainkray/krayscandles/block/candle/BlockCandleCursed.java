@@ -42,8 +42,8 @@ public class BlockCandleCursed extends BlockCandleBase {
     }
 
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-        placer.playSound(SoundEvents.AMBIENT_CAVE, 1, 5);
+    public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+        new Location(world, pos).playSound(SoundEvents.AMBIENT_CAVE, 1, 5);
     }
 
     @Override

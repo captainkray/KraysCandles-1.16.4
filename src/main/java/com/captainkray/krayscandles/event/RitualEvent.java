@@ -11,12 +11,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.Hand;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-public class RitualEvents {
+public class RitualEvent {
 
     @SubscribeEvent
     public void onRitual(PlayerInteractEvent.RightClickBlock event) {
@@ -56,7 +57,7 @@ public class RitualEvents {
                         if (!handAir) player.getHeldItem(Hand.MAIN_HAND).shrink(1);
                         player.swingArm(Hand.MAIN_HAND);
 
-                        player.playSound(recipe.getRitualStructure().getSound(), 1, 1);
+                        location.playSound(recipe.getRitualStructure().getSound(), 1, 1);
 
                         return;
                     }
