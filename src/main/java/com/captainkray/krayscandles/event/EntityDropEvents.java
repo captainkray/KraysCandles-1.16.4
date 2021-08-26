@@ -36,6 +36,9 @@ public class EntityDropEvents {
             if (MathHelper.roll(10 + lootingMultiplier)) {
                 event.getDrops().add(new ItemEntity(world, entity.getPosX(), entity.getPosY(), entity.getPosZ(), new ItemStack(InitItems.ZOMBIE_EAR.get().asItem())));
             }
+            if (MathHelper.roll(10 + lootingMultiplier)) {
+                event.getDrops().add(new ItemEntity(world, entity.getPosX(), entity.getPosY(), entity.getPosZ(), new ItemStack(InitItems.GARLIC.get().asItem())));
+            }
 
         }
 

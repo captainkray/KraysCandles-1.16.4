@@ -37,6 +37,8 @@ public class EffectEvents {
         if (event.getPotionEffect() != null && event.getPotionEffect().getPotion() == InitEffects.FLIGHT.get()) removeFlight(event.getPotionEffect().getPotion(), event.getEntityLiving());
     }
 
+
+
     private void removeFlight(Effect effect, LivingEntity entity) {
 
         if (entity instanceof PlayerEntity) {

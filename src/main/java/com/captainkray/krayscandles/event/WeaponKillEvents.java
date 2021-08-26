@@ -1,6 +1,7 @@
 package com.captainkray.krayscandles.event;
 
 import com.captainkray.krayscandles.block.BlockLanternSoulTrappedItem;
+import com.captainkray.krayscandles.entity.EntityVampire;
 import com.captainkray.krayscandles.init.InitItems;
 import com.captainkray.krayscandles.util.MathHelper;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -39,9 +40,7 @@ public class WeaponKillEvents {
                     target.setSilent(true);
                 }
             }
-        }
-
-        else if (entity instanceof BatEntity) {
+        } else if (entity instanceof BatEntity) {
 
             BatEntity target = (BatEntity) event.getTarget();
 
@@ -89,10 +88,9 @@ public class WeaponKillEvents {
                     if (offItem.getItem() == Items.SOUL_LANTERN) {
                         BlockLanternSoulTrappedItem.trapSoul(player, offItem, killedEntity.getType());
                     }
-                }
-
-                else if (event.getEntity().getEntityWorld().rand.nextInt(5) == 0) {
-                    if (!(killedEntity instanceof PlayerEntity)) killedEntity.entityDropItem(InitItems.SOUL_ESSENCE_LESSER.get());
+                } else if (event.getEntity().getEntityWorld().rand.nextInt(5) == 0) {
+                    if (!(killedEntity instanceof PlayerEntity))
+                        killedEntity.entityDropItem(InitItems.SOUL_ESSENCE_LESSER.get());
                 }
             }
         }

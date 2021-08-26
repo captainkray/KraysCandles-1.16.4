@@ -81,6 +81,7 @@ public class InitItems {
     public static final RegistryObject<Item> Q_TIP =                         regItem("q_tip", ItemBase::new);
     public static final RegistryObject<Item> WINGS_WRAITH =                  regItem("wings_wraith", ItemBase::new);
     public static final RegistryObject<Item> WINGS_DIVINE =                  regItem("wings_divine", ItemBase::new);
+    public static final RegistryObject<Item> GARLIC =                        regItem("garlic", ItemBase::new);
 
     //CROPS
     public static final RegistryObject<Item> SOYBEAN =                       regItem("soybean", () -> new ItemFoodBase(3, 1.2F));

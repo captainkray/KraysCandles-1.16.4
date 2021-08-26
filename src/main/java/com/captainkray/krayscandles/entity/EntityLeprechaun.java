@@ -1,44 +1,45 @@
 package com.captainkray.krayscandles.entity;
 
+
+
 import com.captainkray.krayscandles.init.InitEntityTypes;
-import com.captainkray.krayscandles.init.InitSounds;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.BatEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.IPacket;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
+        import com.captainkray.krayscandles.init.InitSounds;
+        import net.minecraft.block.BlockState;
+        import net.minecraft.entity.EntityType;
+        import net.minecraft.entity.MobEntity;
+        import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+        import net.minecraft.entity.ai.attributes.Attributes;
+        import net.minecraft.entity.ai.goal.*;
+        import net.minecraft.entity.monster.MonsterEntity;
+        import net.minecraft.entity.monster.SpiderEntity;
+        import net.minecraft.entity.player.PlayerEntity;
+        import net.minecraft.nbt.CompoundNBT;
+        import net.minecraft.network.IPacket;
+        import net.minecraft.potion.EffectInstance;
+        import net.minecraft.potion.Effects;
+        import net.minecraft.util.DamageSource;
+        import net.minecraft.util.SoundEvent;
+        import net.minecraft.util.math.BlockPos;
+        import net.minecraft.world.World;
+        import net.minecraftforge.fml.network.NetworkHooks;
 
-public class EntityVampire extends MonsterEntity {
+public class EntityLeprechaun extends MonsterEntity {
 
 
-    public EntityVampire(EntityType<? extends MonsterEntity> type, World world) {
+    public EntityLeprechaun(EntityType<? extends MonsterEntity> type, World world) {
         super(type, world);
     }
 
 
-    public EntityVampire(World world, int x, int y, int z) {
-        super(InitEntityTypes.VAMPIRE.get(), world);
+    public EntityLeprechaun(World world, int x, int y, int z) {
+        super(InitEntityTypes.LEPRECHAUN.get(), world);
         setLocationAndAngles(x, y, z, 0, 0);
     }
     public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
         return MobEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH, 20D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.4D)
-                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 4);
+                .createMutableAttribute(Attributes.MAX_HEALTH, 10D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3D)
+                .createMutableAttribute(Attributes.ATTACK_DAMAGE, 1);
     }
 
     @Override
@@ -49,7 +50,7 @@ public class EntityVampire extends MonsterEntity {
         this.goalSelector.addGoal(8, new LookAtGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setCallsForHelp());
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, SpiderEntity.class, true));
     }
 
     @Override
@@ -59,29 +60,12 @@ public class EntityVampire extends MonsterEntity {
             setMotion(getMotion().mul(1.0D, 1.0D, 1.0D));
         }
 
-        if (world.isRemote) {
-            world.addParticle(ParticleTypes.LARGE_SMOKE, getPosXRandom(0.5D), getPosYRandom(), getPosZRandom(0.5D), 0.0D, 0.0D, 0.0D);
-        }
 
         if (!this.world.isRemote) {
-        if (world.isDaytime()){
-            if(getDisplayName().getString().equalsIgnoreCase("The Count")){
-                return;
-            }
-            else {
-                playSound(InitSounds.VAMPIRE_VANISH.get(), 1,1);
-
-                addPotionEffect(new EffectInstance(Effects.INVISIBILITY, 20, 4));
-                BatEntity vamp = new BatEntity(EntityType.BAT, world);
-                vamp.setPosition(getPosX(), getPosY(), getPosZ());
-                world.addEntity(vamp);
-                remove();
+            if (world.isNightTime()) {
+                addPotionEffect(new EffectInstance(Effects.INVISIBILITY, 20));
             }
         }
-        else {
-            addPotionEffect(new EffectInstance(Effects.SPEED, 20));
-        }
-    }
     }
 
     @Override
@@ -125,17 +109,17 @@ public class EntityVampire extends MonsterEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return InitSounds.VAMPIRE_AMBIENT.get();
+        return InitSounds.LEPRECHAUN_COINS.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return InitSounds.VAMPIRE_HURT.get();
+        return InitSounds.LEPRECHAUN_LAUGH.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return InitSounds.VAMPIRE_DEATH.get();
+        return InitSounds.LEPRECHAUN_DEATH.get();
     }
 
     @Override
@@ -148,7 +132,7 @@ public class EntityVampire extends MonsterEntity {
 
     @Override
     protected int getExperiencePoints(PlayerEntity player) {
-        return 40;
+        return 20;
     }
 
     @Override
