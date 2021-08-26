@@ -35,15 +35,15 @@ public class EntityDropEvents {
             if (MathHelper.roll(10 + lootingMultiplier)) {
                 event.getDrops().add(new ItemEntity(world, entity.getPosX(), entity.getPosY(), entity.getPosZ(), new ItemStack(InitItems.ZOMBIE_EAR.get().asItem())));
             }
-<<<<<<< Updated upstream
+
             if (MathHelper.roll(10 + lootingMultiplier)) {
                 event.getDrops().add(new ItemEntity(world, entity.getPosX(), entity.getPosY(), entity.getPosZ(), new ItemStack(InitItems.GARLIC.get().asItem())));
             }
-=======
+
         }
 
         if (entity instanceof EntityWraith) {
->>>>>>> Stashed changes
+
 
             if (MathHelper.roll(20 + lootingMultiplier)) {
                 event.getDrops().add(new ItemEntity(world, entity.getPosX(), entity.getPosY(), entity.getPosZ(), new ItemStack(InitItems.CLOTH_CURSED.get().asItem())));

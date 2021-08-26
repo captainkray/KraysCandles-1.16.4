@@ -28,8 +28,8 @@ public class VampireEvents {
                 if (offItem.getItem() == InitItems.GARLIC.get()) {
                     VampEntity.playSound(InitSounds.VAMPIRE_WEAKENED.get(), 2, 1);
                     VampEntity.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 100));
-                    VampEntity.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 100));
-
+                    VampEntity.setHealth(VampEntity.getHealth() - 10);
+                    VampEntity.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 300));
                 }
             }
         }

@@ -30,4 +30,5 @@ public class InitSounds {
     public static final RegistryObject<SoundEvent> VAMPIRE_HURT = SOUNDS.register("entity.vampire_hurt", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "entity.vampire_hurt")));
     public static final RegistryObject<SoundEvent> VAMPIRE_DEATH = SOUNDS.register("entity.vampire_death", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "entity.vampire_death")));
     public static final RegistryObject<SoundEvent> VAMPIRE_VANISH = SOUNDS.register("entity.vampire_vanish", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "entity.vampire_vanish")));
+    public static final RegistryObject<SoundEvent> VAMPIRE_WEAKENED = SOUNDS.register("entity.vampire_weakened", () -> new SoundEvent(new ResourceLocation(KCReference.MOD_ID, "entity.vampire_weakened")));
 }

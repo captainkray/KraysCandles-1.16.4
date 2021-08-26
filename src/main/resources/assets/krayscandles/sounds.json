@@ -99,6 +99,16 @@
       }
     ]
   },
+  "entity.vampire_weakened": {
+    "category": "entity",
+    "subtitle": "entity.vampire_weakened.sub",
+    "sounds": [
+      {
+        "name": "krayscandles:entity/vampire_weakened",
+        "stream": true
+      }
+    ]
+  },
   "block.wraith_ritual": {
     "category": "block",
     "subtitle": "block.wraith_ritual.sub",
