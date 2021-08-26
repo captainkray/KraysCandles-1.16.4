@@ -27,6 +27,7 @@ public class RitualRecipes {
     public static final RitualRecipe RUNE_LUCK = new RitualRecipe();
     public static final RitualRecipe RUNE_ENERGY = new RitualRecipe();
     public static final RitualRecipe RUNE_MINING = new RitualRecipe();
+    public static final RitualRecipe RUNE_NULL = new RitualRecipe();
 
     public static final RitualRecipe CANDLE_BASE = new RitualRecipe(RitualStructureTypes.CANDLE, true);
     public static final RitualRecipe CANDLE_BLESSED = new RitualRecipe();
@@ -108,6 +109,9 @@ public class RitualRecipes {
         RUNE_MINING.addIngredient(Blocks.TNT.asItem());
         RUNE_MINING.setDropResult(InitItems.RUNE_GREAT_MINING.get());
 
+        RUNE_NULL.addBaseRecipe(RUNE_BASE_GREATER);
+        RUNE_NULL.addIngredient(InitItems.CLOTH_CURSED.get());
+        RUNE_NULL.setDropResult(InitItems.RUNE_NULL.get());
 
 
         CANDLE_BASE.addIngredient(InitItems.WAX_CHUNK_CURSED_SMALL.get(), 4);
@@ -154,7 +158,7 @@ public class RitualRecipes {
         CANDLE_MINING.setBlockResult(InitItems.CANDLE_CAVERN.get());
 
         CANDLE_NULL.addBaseRecipe(CANDLE_BASE);
-        CANDLE_NULL.setHandItem(InitItems.RUNE_GREAT_FIRE.get());
+        CANDLE_NULL.setHandItem(InitItems.RUNE_NULL.get());
         CANDLE_NULL.setBlockResult(InitItems.CANDLE_NULL.get());
 
 

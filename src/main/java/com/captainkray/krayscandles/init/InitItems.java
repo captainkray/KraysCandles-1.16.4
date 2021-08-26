@@ -79,6 +79,7 @@ public class InitItems {
     public static final RegistryObject<Item> ZOMBIE_EAR =                    regItem("zombie_ear", ItemZombieEar::new);
     public static final RegistryObject<Item> FLYING_BAT_EYEBALL =            regItem("flying_bat_eyeball", ItemBatEyeball::new);
     public static final RegistryObject<Item> Q_TIP =                         regItem("q_tip", ItemBase::new);
+    public static final RegistryObject<Item> CLOTH_CURSED =                  regItem("cloth_cursed", ItemBase::new);
     public static final RegistryObject<Item> WINGS_WRAITH =                  regItem("wings_wraith", ItemBase::new);
     public static final RegistryObject<Item> WINGS_DIVINE =                  regItem("wings_divine", ItemBase::new);
     public static final RegistryObject<Item> GARLIC =                        regItem("garlic", ItemBase::new);
@@ -98,6 +99,7 @@ public class InitItems {
     public static final RegistryObject<Item> RUNE_GREAT_LUCK =               regItem("rune_great_luck", () -> new ItemRitual(RitualRecipes.RUNE_LUCK));
     public static final RegistryObject<Item> RUNE_GREAT_ENERGY =             regItem("rune_great_energy", () -> new ItemRitual(RitualRecipes.RUNE_ENERGY));
     public static final RegistryObject<Item> RUNE_GREAT_MINING =             regItem("rune_great_mining", () -> new ItemRitual(RitualRecipes.RUNE_MINING));
+    public static final RegistryObject<Item> RUNE_NULL =                     regItem("rune_null", () -> new ItemRitual(RitualRecipes.RUNE_NULL));
 
 
     //WANDS
