@@ -79,7 +79,7 @@ public class BlockCandleBlessed extends BlockCandleBase {
 
     @Override
     public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-        placer.playSound(SoundEvents.AMBIENT_UNDERWATER_LOOP_ADDITIONS_ULTRA_RARE, 1, 12);
+        new Location(world, pos).playSound(SoundEvents.AMBIENT_UNDERWATER_LOOP_ADDITIONS_ULTRA_RARE, 1, 12);
     }
 
     @Override

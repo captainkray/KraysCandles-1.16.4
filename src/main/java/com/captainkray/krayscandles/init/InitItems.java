@@ -117,14 +117,14 @@ public class InitItems {
     public static final RegistryObject<Item> HELMET_BLESSED_NIGHT =     regItem("helmet_blessed_night", ItemBlessedNightHelmet::new);
 
     //RITUAL NOTES
-    public static final RegistryObject<Item> RITUAL_NOTE_ESSENCE =       regItem("ritual_note_essence", ItemBase::new);
-    public static final RegistryObject<Item> RITUAL_NOTE_RUNE =       regItem("ritual_note_rune", ItemBase::new);
+    public static final RegistryObject<Item> RITUAL_NOTE_ESSENCE =      regItem("ritual_note_essence", ItemBase::new);
+    public static final RegistryObject<Item> RITUAL_NOTE_RUNE =         regItem("ritual_note_rune", ItemBase::new);
     public static final RegistryObject<Item> RITUAL_NOTE_CANDLE =       regItem("ritual_note_candle", ItemBase::new);
-    public static final RegistryObject<Item> RITUAL_NOTE_WAND =       regItem("ritual_note_wand", ItemBase::new);
+    public static final RegistryObject<Item> RITUAL_NOTE_WAND =         regItem("ritual_note_wand", ItemBase::new);
     public static final RegistryObject<Item> RITUAL_NOTE_WRAITH =       regItem("ritual_note_wraith", ItemBase::new);
 
     //MUSIC DISCS
-    public static final RegistryObject<Item> MUSIC_DISC_CHUNK =                  regItem("music_disc_chunk", () -> new ItemDiscChunk(InitSounds.MUSIC_DISC_CHUNK));
+    public static final RegistryObject<Item> MUSIC_DISC_CHUNK =         regItem("music_disc_chunk", () -> new ItemDiscChunk(InitSounds.MUSIC_DISC_CHUNK));
 
 
 
@@ -145,6 +145,7 @@ public class InitItems {
     public static final RegistryObject<Block> CANDLE_LUCK =                   regBlock("candle_luck", KraysCandles.TAB_CANDLE, BlockCandleLuck::new);
     public static final RegistryObject<Block> CANDLE_ENERGY =                 regBlock("candle_energy", KraysCandles.TAB_CANDLE, BlockCandleEnergy::new);
     public static final RegistryObject<Block> CANDLE_CAVERN =                 regBlock("candle_cavern", KraysCandles.TAB_CANDLE, BlockCandleCavern::new);
+    public static final RegistryObject<Block> CANDLE_NULL =                   regBlock("candle_null", KraysCandles.TAB_CANDLE, BlockCandleNull::new);
     public static final RegistryObject<Block> CANDLE_WAX_BEE =                regBlock("candle_wax_bee", KraysCandles.TAB_CANDLE, BlockCandleWaxBee::new);
     public static final RegistryObject<Block> CANDLE_WAX_EAR =                regBlock("candle_wax_ear", KraysCandles.TAB_CANDLE, BlockCandleWaxEar::new);
 

@@ -20,7 +20,7 @@ public class DispenserLightBehavior implements IDispenseItemBehavior {
 
             if (location.getBlockState().get(BlockCandleBase.LIT)) {
 
-                BlockCandleBase.extinguishCandle(location, null);
+                BlockCandleBase.extinguishCandle(location);
             }
 
             else BlockCandleBase.lightCandle(location, null, stack);

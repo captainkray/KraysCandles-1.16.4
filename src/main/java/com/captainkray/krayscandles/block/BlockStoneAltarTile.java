@@ -51,7 +51,7 @@ public class BlockStoneAltarTile extends BlockBase implements ITileEntityProvide
             if (alterTile.getRitualStack().isEmpty() && !stack.isEmpty()) {
                 alterTile.placeRitualStack(stack.copy());
                 stack.shrink(1);
-                player.playSound(SoundEvents.BLOCK_END_PORTAL_FRAME_FILL, 1, 1);
+                location.playSound(SoundEvents.BLOCK_END_PORTAL_FRAME_FILL, 1, 1);
                 return ActionResultType.SUCCESS;
             }
 
@@ -63,7 +63,7 @@ public class BlockStoneAltarTile extends BlockBase implements ITileEntityProvide
                 ItemHelper.spawnStackAtLocation(world, location, copiedStack);
                 alterTile.takeRitualStack();
 
-                player.playSound(SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM, 1, 1);
+                location.playSound(SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM, 1, 1);
                 return ActionResultType.SUCCESS;
             }
         }

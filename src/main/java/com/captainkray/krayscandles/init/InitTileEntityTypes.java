@@ -40,6 +40,8 @@ public class InitTileEntityTypes {
             "candle_energy", () -> new TileEntityType<>(TileEntityCandleEnergy::new, Sets.newHashSet(InitItems.CANDLE_ENERGY.get()), null));
     public static final RegistryObject<TileEntityType<TileEntityCandleCavern>> CANDLE_CAVERN = TILE_ENTITY_TYPES.register(
             "candle_cavern", () -> new TileEntityType<>(TileEntityCandleCavern::new, Sets.newHashSet(InitItems.CANDLE_CAVERN.get()), null));
+    public static final RegistryObject<TileEntityType<TileEntityCandleNull>> CANDLE_NULL = TILE_ENTITY_TYPES.register(
+            "candle_null", () -> new TileEntityType<>(TileEntityCandleNull::new, Sets.newHashSet(InitItems.CANDLE_NULL.get()), null));
     public static final RegistryObject<TileEntityType<TileEntityCandleWaxBee>> CANDLE_WAX_BEE = TILE_ENTITY_TYPES.register(
             "candle_wax_bee", () -> new TileEntityType<>(TileEntityCandleWaxBee::new, Sets.newHashSet(InitItems.CANDLE_WAX_BEE.get()), null));
     public static final RegistryObject<TileEntityType<TileEntityCandleWaxEar>> CANDLE_WAX_EAR = TILE_ENTITY_TYPES.register(

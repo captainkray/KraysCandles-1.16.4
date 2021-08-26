@@ -66,7 +66,7 @@ public abstract class BlockCandleBase extends BlockBase implements ITileEntityPr
 
                 if (flintAndSteel) {
                     if (!location.world.isRemote) lighter.attemptDamageItem(1, location.world.rand, (ServerPlayerEntity) player);
-                    if (player != null) player.playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, 1, 1);
+                    location.playSound(SoundEvents.ITEM_FLINTANDSTEEL_USE, 1, 1);
                 }
 
                 else {
@@ -77,7 +77,7 @@ public abstract class BlockCandleBase extends BlockBase implements ITileEntityPr
                         attachSoul(location, soulType, soulName);
                     }
 
-                    if (player != null) player.playSound(SoundEvents.ITEM_FIRECHARGE_USE, 1, 2);
+                    location.playSound(SoundEvents.ITEM_FIRECHARGE_USE, 1, 1);
                 }
             }
 
@@ -87,10 +87,13 @@ public abstract class BlockCandleBase extends BlockBase implements ITileEntityPr
         return false;
     }
 
-    public static void extinguishCandle(Location location, PlayerEntity player) {
-        setLit(location, false);
-        attachSoul(location, "" ,"");
-        if(player != null) player.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 1, 2);
+    public static void extinguishCandle(Location location) {
+
+        if (location.getBlockState().get(LIT)) {
+            setLit(location, false);
+            attachSoul(location, "", "");
+            location.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 1, 2);
+        }
     }
 
     public static void setLit(Location location, boolean value) {
@@ -127,7 +130,7 @@ public abstract class BlockCandleBase extends BlockBase implements ITileEntityPr
         Location location = new Location(world, pos);
 
         if (state.get(LIT)) {
-            extinguishCandle(location, player);
+            extinguishCandle(location);
         }
     }
 

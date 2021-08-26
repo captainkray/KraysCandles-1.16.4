@@ -106,7 +106,7 @@ public class BlockSoyCandleMount extends BlockCandleBase {
                     mount.takeCandle();
                     setLit(location, false);
                     mount.setSoul("", "");
-                    player.playSound(SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM, 1, 1);
+                    location.playSound(SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM, 1, 1);
                     return ActionResultType.SUCCESS;
                 }
 
@@ -116,7 +116,7 @@ public class BlockSoyCandleMount extends BlockCandleBase {
             else if (mount.getCandleStack().isEmpty() && heldStack.getItem() == InitItems.CANDLE_SOY_COLORED_ITEM.get()) {
                 mount.placeCandle(heldStack.getDamage());
                 heldStack.shrink(1);
-                player.playSound(SoundEvents.ENTITY_ITEM_FRAME_ADD_ITEM, 1, 1);
+                location.playSound(SoundEvents.ENTITY_ITEM_FRAME_ADD_ITEM, 1, 1);
                 return ActionResultType.SUCCESS;
             }
         }

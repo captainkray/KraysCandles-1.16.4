@@ -51,6 +51,6 @@ public class RitualBlockCandle extends RitualBlock {
 
         world.addParticle(ParticleTypes.LARGE_SMOKE, location.x + 0.5F, location.y + 0.4F, location.z + 0.5F, 0, 0, 0);
 
-        player.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 0.05F, 1);
+        location.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 0.05F, 1);
     }
 }

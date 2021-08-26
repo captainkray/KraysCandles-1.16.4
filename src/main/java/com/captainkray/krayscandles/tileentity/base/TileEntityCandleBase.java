@@ -3,6 +3,7 @@ package com.captainkray.krayscandles.tileentity.base;
 import com.captainkray.krayscandles.block.base.BlockCandleBase;
 import com.captainkray.krayscandles.util.EffectHelper;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.nbt.CompoundNBT;
@@ -17,7 +18,7 @@ import java.util.Optional;
 
 public abstract class TileEntityCandleBase extends TileEntityBase implements ISoulFlame {
 
-    private static final int EFFECT_RANGE = 8;
+    public static final int EFFECT_RANGE = 8;
 
     private String entitySoulType = "";
     private String entitySoulName = "";
@@ -27,6 +28,8 @@ public abstract class TileEntityCandleBase extends TileEntityBase implements ISo
     }
 
     public abstract EffectInstance[] getCandleEffects();
+
+    public void onEntityEffect(LivingEntity entity) {};
 
     @Override
     public String getSoulType() {
@@ -76,6 +79,8 @@ public abstract class TileEntityCandleBase extends TileEntityBase implements ISo
                             for (EffectInstance effect : getCandleEffects()) {
                                 EffectHelper.addPotionEffect(effect.getPotion(), 60, effect.getAmplifier(), livingEntity);
                             }
+
+                            onEntityEffect(livingEntity);
                         }
                     }
                 }

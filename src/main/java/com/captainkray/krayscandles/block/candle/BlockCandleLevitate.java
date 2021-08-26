@@ -44,8 +44,8 @@ public class BlockCandleLevitate extends BlockCandleBase {
     }
 
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-        placer.playSound(SoundEvents.ENTITY_PHANTOM_SWOOP, 1, 12);
+    public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+        new Location(world, pos).playSound(SoundEvents.ENTITY_PHANTOM_SWOOP, 1, 12);
     }
 
     @Override

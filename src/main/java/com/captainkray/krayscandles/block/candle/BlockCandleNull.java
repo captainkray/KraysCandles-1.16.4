@@ -19,18 +19,18 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public class BlockCandleInvis extends BlockCandleBase {
+public class BlockCandleNull extends BlockCandleBase {
 
     private static final ShapeBundle SHAPE = new ShapeBundle();
 
     static {
-        SHAPE.addShape(Block.makeCuboidShape(7.75, 8, 7.75, 8.25, 10, 8.25));
-        SHAPE.addShape(Block.makeCuboidShape(7, 0, 7, 9, 8, 9));
+        SHAPE.addShape(Block.makeCuboidShape(7, 0, 7, 9, 22, 9));
+        SHAPE.addShape(Block.makeCuboidShape(7.825D, 22, 7.825D, 8.225D, 23.75D, 8.225D));
     }
 
     @Override
     public RitualRecipe getRitualRecipe() {
-        return RitualRecipes.CANDLE_INVIS;
+        return RitualRecipes.CANDLE_NULL;
     }
 
     @Override
@@ -40,16 +40,26 @@ public class BlockCandleInvis extends BlockCandleBase {
 
     @Override
     public void renderFlame(World world, BlockPos pos, BlockState state, Vector3d particlePos) {
-        ParticleHelper.renderFlame(world, pos,  particlePos.x, particlePos.y + 0.2D, particlePos.z);
+
+        double midY = particlePos.y + 0.35D;
+        double topY = particlePos.y + 1.125D;
+
+        double midOffset = 0.1D;
+
+        ParticleHelper.renderFlame(world, pos, particlePos.x, topY, particlePos.z);
+        ParticleHelper.renderFlame(world, pos,  particlePos.x + midOffset, midY, particlePos.z);
+        ParticleHelper.renderFlame(world, pos,  particlePos.x - midOffset, midY, particlePos.z);
+        ParticleHelper.renderFlame(world, pos,  particlePos.x, midY, particlePos.z + midOffset);
+        ParticleHelper.renderFlame(world, pos,  particlePos.x, midY, particlePos.z - midOffset);
     }
 
     @Override
     public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-        new Location(world, pos).playSound(SoundEvents.BLOCK_REDSTONE_TORCH_BURNOUT, 1, -10);
+        new Location(world, pos).playSound(SoundEvents.BLOCK_BEACON_DEACTIVATE, 1, 10);
     }
 
     @Override
     public TileEntity createNewTileEntity(IBlockReader worldIn) {
-        return InitTileEntityTypes.CANDLE_INVIS.get().create();
+        return InitTileEntityTypes.CANDLE_NULL.get().create();
     }
 }

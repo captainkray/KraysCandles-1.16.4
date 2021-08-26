@@ -6,7 +6,7 @@ import net.minecraftforge.common.MinecraftForge;
 public class InitEvents {
 
     public static void initCommon() {
-        MinecraftForge.EVENT_BUS.register(new RitualEvents());
+        MinecraftForge.EVENT_BUS.register(new RitualEvent());
         MinecraftForge.EVENT_BUS.register(new WeaponKillEvents());
         MinecraftForge.EVENT_BUS.register(new WraithSpawnEvents());
         MinecraftForge.EVENT_BUS.register(new RecipeEvents());
