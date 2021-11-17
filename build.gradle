@@ -21,7 +21,7 @@ repositories {
 }
 
 version = "${mod_version}"
-group = 'com.captainkray.krayscandles'
+group = 'com.tm.krayscandles'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
